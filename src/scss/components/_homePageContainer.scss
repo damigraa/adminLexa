@@ -1,0 +1,36 @@
+.homePageContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-wrap:wrap;
+    &__mainBox{
+        padding: 20px;
+        transition: 0.5s all;
+        a{
+            text-decoration: none;
+        }
+        &:hover{
+
+            .homePageContainer__iconContainer {
+                svg{
+                    color: rgb(161, 103, 103);
+                }
+            }
+                .homePageContainer__text {
+                        color: rgb(161, 103, 103);
+            }
+        }
+    }
+    &__iconContainer{
+        svg{
+            color: rgb(65, 65, 65);
+            height: 45px;
+            width: 45px;
+        }
+    }
+    &__text{
+        color: rgb(65, 65, 65);
+padding-top: 5px;
+    }
+}
