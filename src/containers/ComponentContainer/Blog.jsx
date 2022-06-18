@@ -25,8 +25,25 @@ const Blog = () => {
   const blog = useSelector((state) => state.blog.blog)
 
   const handleShow = () => setShow(true)
-  const handleClose = () => setShow(false)
-
+  const handleClose = () => {
+    setShow(false)
+    clear()
+  }
+  const [blogForm, setBlogForm] = useState({
+    title: "",
+    videoHref: "",
+    description: "",
+  })
+  const clear = () => {
+    setCurrentId(null)
+    setBlogForm({
+      title: "",
+      videoHref: "",
+      description: "",
+      weight: "",
+      img: []
+    })
+  }
   useEffect(() => {
     dispatch(getBlog())
   }, [])
@@ -57,9 +74,10 @@ const Blog = () => {
     <MainContainer
       backButtonProduct
       // productSort
-      fullFunctional
+      mediumFunctional
       get={getBlog}
       handleShow={handleShow}
+      backHref
     >
       <Container>
         <Row>
@@ -76,6 +94,8 @@ const Blog = () => {
         </Row>
       </Container>
       <AddBlog
+        setBlogForm={setBlogForm}
+        blogForm={blogForm}
         show={show}
         handleClose={handleClose}
         currentId={currentId}

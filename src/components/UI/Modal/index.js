@@ -20,7 +20,7 @@ const NewModal = (props) => {
 
             <Button
               variant="primary"
-              style={{ backgroundColor: "red" }}
+              style={{ backgroundColor: "#" }}
               className="btn-sm"
               onClick={props.handleClose}
 
@@ -35,7 +35,7 @@ const NewModal = (props) => {
               onClick={props.onSubmit}
 
             >
-              Подтвердить
+              {!props.currentId ? "Подтвердить" : "Изменить"}
             </Button>
           </>
         )}

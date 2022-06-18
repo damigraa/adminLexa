@@ -7,19 +7,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addPortfolio, updatePortfolio } from '../../actions';
 
 
-export const AddPortfolio = ({ show, handleClose, setCurrentId, currentId }) => {
+export const AddPortfolio = ({portfolioForm, setPortfolioForm, show, handleClose, setCurrentId, currentId }) => {
     const dispatch = useDispatch();
     const portfolio = useSelector((state) => currentId ? state.portfolio.portfolio.find((portfolio) => portfolio._id === currentId) : null)
 
     const [images, setImages] = useState([]);
-    const [portfolioForm, setPortfolioForm] = useState({
-        title: "",
-        titleTwo: "",
-        videoHref: "",
-        description: "",
-        city: "",
-    })
-
+ 
 
     useEffect(() => {
         if (portfolio) setPortfolioForm(portfolio)
@@ -31,7 +24,7 @@ export const AddPortfolio = ({ show, handleClose, setCurrentId, currentId }) => 
             e.preventDefault()
             dispatch(updatePortfolio(currentId, portfolioForm))
             handleClose()
-            clear()
+            // clear()
         } else {
             const form = new FormData();
             form.append("title", portfolioForm.title);
@@ -43,7 +36,7 @@ export const AddPortfolio = ({ show, handleClose, setCurrentId, currentId }) => 
                 form.append("images", images[i]);
             }
             dispatch(addPortfolio(form)).then(() => handleClose());
-            clear()
+            // clear()
 
         }
 
@@ -60,18 +53,7 @@ export const AddPortfolio = ({ show, handleClose, setCurrentId, currentId }) => 
         setImages(e.target.files);
     };
 
-    const clear = () => {
-        setCurrentId(null)
-        setPortfolioForm({
-            title: "",
-            titleTwo: "",
-            videoHref: "",
-            description: "",
-            city: "",
-            weight: "",
-            images: []
-        })
-    }
+
     return (
         <Modal
             show={show}

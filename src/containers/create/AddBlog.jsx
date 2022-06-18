@@ -7,17 +7,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addBlog, updateBlog } from '../../actions';
 
 
-export const AddBlog = ({ show, handleClose, setCurrentId, currentId }) => {
+export const AddBlog = ({ blogForm, setBlogForm, show, handleClose, setCurrentId, currentId }) => {
     const dispatch = useDispatch();
     const blog = useSelector((state) => currentId ? state.blog.blog.find((stand) => stand._id === currentId) : null)
 
     const [img, setImg] = useState([]);
 
-    const [blogForm, setBlogForm] = useState({
-        title: "",
-        videoHref: "",
-        description: "",
-    })
+
 
 
     useEffect(() => {
@@ -30,7 +26,6 @@ export const AddBlog = ({ show, handleClose, setCurrentId, currentId }) => {
             e.preventDefault()
             dispatch(updateBlog(currentId, blogForm))
             handleClose()
-            clear()
         } else {
             const form = new FormData();
             form.append("title", blogForm.title);
@@ -40,7 +35,6 @@ export const AddBlog = ({ show, handleClose, setCurrentId, currentId }) => {
                 form.append("img", pic);
             }
             dispatch(addBlog(form)).then(() => handleClose());
-            clear()
 
         }
 
@@ -57,16 +51,7 @@ export const AddBlog = ({ show, handleClose, setCurrentId, currentId }) => {
         setImg([...img, e.target.files[0]]);
     };
 
-    const clear = () => {
-        setCurrentId(null)
-        setBlogForm({
-            title: "",
-            videoHref: "",
-            description: "",
-            weight: "",
-            img: []
-        })
-    }
+
     return (
         <Modal
             show={show}

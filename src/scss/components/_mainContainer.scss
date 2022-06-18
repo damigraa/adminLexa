@@ -3,4 +3,16 @@
     align-items: center;
     justify-content: space-between;
     margin: 30px;
+    @media(max-width: 700px){
+        margin-top: 50px;
+        display: block;
+        .backButton{
+            height: 30px;
+            width: 100px;
+            font-size: 15px;
+        }
+        h1{
+            margin-top: 20px;
+        }
+    }
 }

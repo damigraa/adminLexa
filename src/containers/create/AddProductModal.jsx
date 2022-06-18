@@ -10,7 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { getTombstoneCurb } from './../../actions/components/tombstoneCurb';
 
 
-export const AddProductModal = ({ show, handleClose, setCurrentId, currentId }) => {
+export const AddProductModal = ({ show, handleClose, setCurrentId, currentId, productForm, setProductForm, clear }) => {
     const dispatch = useDispatch();
     const category = useSelector((state) => state.category)
     // const standMonument = useSelector((state) => state.standMonument.standMonument)
@@ -18,15 +18,7 @@ export const AddProductModal = ({ show, handleClose, setCurrentId, currentId }) 
     const graniteTiles = useSelector((state) => state.graniteTiles.graniteTiles)
     const product = useSelector((state) => currentId ? state.product.products.find((m) => m._id === currentId) : null)
     const [productPictures, setProductPictures] = useState("");
-    const [productForm, setProductForm] = useState({
-        name: "",
-        quantity: "",
-        price: "",
-        description: "",
-        categoryId: "",
-        size: "",
-        weight: "",
-    })
+
     const [productPrice, setProductPrice] = useState([
         { id: uuidv4(), newPrice: '', size: '' },
     ]);
@@ -71,7 +63,7 @@ export const AddProductModal = ({ show, handleClose, setCurrentId, currentId }) 
         return options;
     };
 
-    
+
     const clearAddedPhotos = () => {
         setProductPictures([])
     }
@@ -95,6 +87,8 @@ export const AddProductModal = ({ show, handleClose, setCurrentId, currentId }) 
                 form.append("productPictures", productPictures[i]);
             }
             dispatch(addProduct(form)).then(() => handleClose());
+            clear()
+
         }
 
     };
@@ -103,23 +97,14 @@ export const AddProductModal = ({ show, handleClose, setCurrentId, currentId }) 
         setProductPictures(e.target.files);
     };
 
-    const clear = () => {
-        setCurrentId(null)
-        setProductForm({
-            name: "",
-            quantity: "",
-            price: "",
-            description: "",
-            categoryId: "",
-            weight: "",
-            size: ""
-        })
-    }
+
     return (
         <Modal
+        
             show={show}
+            currentId={currentId}
             handleClose={handleClose}
-            modalTitle={"Добавить новый продукт"}
+            modalTitle={!currentId ? "Добавить новый продукт" : "Изменить текст в товаре"}
             onSubmit={submitProductForm}
         >
             {/* {productPrice.map(item => (
@@ -219,21 +204,20 @@ export const AddProductModal = ({ show, handleClose, setCurrentId, currentId }) 
                 </select> : null
             }
 
-            {/* {productPictures.length > 0
-                ? productPictures.map((pic, index) => (
-                    <div key={index}>{pic.name}</div>
-                ))
-                : null} */}
-            <input
-                type="file"
-                name="productPictures"
-                onChange={(e) => handleProductPictures(e)}
-                required
-                multiple
-            />
-            {/* <input multiple={true} onChange={(event) => fileUploadHandler(event)} type="file" id="disk__upload-input" className="disk__upload-input" /> */}
-
-            <button onClick={(e) => clearAddedPhotos(e)}>Удалить фото</button>
+            {!currentId ? <>
+                <input
+                    type="file"
+                    name="productPictures"
+                    onChange={(e) => handleProductPictures(e)}
+                    required
+                    multiple
+                />
+                <button
+                    onClick={(e) => clearAddedPhotos(e)}>
+                    Удалить фото
+                </button>
+            </> : null
+            }
         </Modal>
     )
 }

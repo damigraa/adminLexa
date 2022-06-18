@@ -19,11 +19,38 @@ const Products = () => {
   const [productDetailModal, setProductDetailModal] = useState(false);
   const [productDetails, setProductDetails] = useState(null);
   const [currentId, setCurrentId] = useState(null)
+
+  const [productForm, setProductForm] = useState({
+    name: "",
+    quantity: "",
+    price: "",
+    description: "",
+    categoryId: "",
+    size: "",
+    weight: "",
+  })
+  const clear = () => {
+    setCurrentId(null)
+    setProductForm({
+      name: "",
+      quantity: "",
+      price: "",
+      description: "",
+      categoryId: "",
+      weight: "",
+      size: ""
+    })
+  }
   const dispatch = useDispatch();
 
   const product = useSelector((state) => state.product.products)
   const handleShow = () => setShow(true)
-  const handleClose = () => setShow(false)
+
+  const handleClose = () => {
+    clear()
+    setShow(false)
+
+  }
 
   useEffect(() => {
     dispatch(getProducts())
@@ -52,6 +79,7 @@ const Products = () => {
   }
   return (
     <MainContainer
+      buttonText={"Добавить продукт"}
       backButtonProduct
       productSort
       fullFunctional
@@ -80,6 +108,9 @@ const Products = () => {
         currentId={currentId}
         setCurrentId={setCurrentId}
         product={product}
+        productForm={productForm}
+        setProductForm={setProductForm}
+        clear={clear}
       />
       <DetailsProduct
         productDetailModal={productDetailModal}

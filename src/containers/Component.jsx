@@ -4,6 +4,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
+import { TextField } from '@mui/material';
 
 
 export function Search(props) {
@@ -30,6 +31,13 @@ export function Search(props) {
 
     return (
         <>
+            {/* <TextField
+                id="filled-basic"
+                label="Filled"
+                variant="Filled"
+                value={searchName}
+                onChange={(e) => searchChangeHandler(e)}
+            /> */}
             <input
                 className="disk__search"
                 type="text"
@@ -57,12 +65,12 @@ export const Sort = (props) => {
             text: "По названию от Я-А"
         },
         {
-            value: props.productSort ? "email" : "price",
-            text: props.productSort ? "Email A-Z" : "По цене от дорогого к дешевому"
+            value: !props.productSort ? "email" : "price",
+            text: !props.productSort ? "Email A-Z" : "По цене от дорогого к дешевому"
         },
         {
-            value: props.productSort ? "emailMinus" : "priceMinus",
-            text: props.productSort ? "Email Z-A" : "По цене от дорогого к дешевому"
+            value: !props.productSort ? "emailMinus" : "priceMinus",
+            text: !props.productSort ? "Email Z-A" : "По цене от дорогого к дешевому"
         },
         {
             value: "updatedAtMinus",
@@ -78,7 +86,7 @@ export const Sort = (props) => {
     }, [sort])//добавил сорт
 
     return (
-        <>
+        <div className="selectContainer1">
             <FormControl sx={{ m: 1, minWidth: 120 }}>
                 <InputLabel id="demo-simple-select-helper-label">сортировка</InputLabel>
                 <Select
@@ -96,7 +104,7 @@ export const Sort = (props) => {
                     ))}
                 </Select>
             </FormControl>
-        </>
+        </div>
     )
 }
 

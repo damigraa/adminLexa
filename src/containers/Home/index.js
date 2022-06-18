@@ -30,11 +30,11 @@ const Home = (props) => {
       text: "Продукты",
       icon: <CurtainsClosedIcon />
     },
-    {
-      href: "/orders",
-      text: "Заказы",
-      icon: <FilterFramesIcon />
-    },
+    // {
+    //   href: "/orders",
+    //   text: "Заказы",
+    //   icon: <FilterFramesIcon />
+    // },
     {
       href: "/portfolio",
       text: "Портфолио",
@@ -50,11 +50,11 @@ const Home = (props) => {
       text: "Заявки",
       icon: <BorderColorIcon />
     },
-    {
-      href: "/user",
-      text: "Пользователи",
-      icon: <PersonOutlineIcon />
-    },
+    // {
+    //   href: "/user",
+    //   text: "Пользователи",
+    //   icon: <PersonOutlineIcon />
+    // },
     // {
     //   href: "/siteSetting",
     //   text: "Настройки сайта",
@@ -64,10 +64,10 @@ const Home = (props) => {
   return (
     <Layout sidebar>
       <h1 style={{
-        marginBottom: "20px",
+        margin: "20px",
         textAlign: "center"
       }}>
-        Главная страница
+        На какую страницу перейдем?
       </h1>
       <div className="homePageContainer">
         {items.map((item, index) => (

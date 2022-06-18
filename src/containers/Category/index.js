@@ -205,14 +205,14 @@ const Category = (props) => {
                 ]}
             >
 
-                <div style={{marginBottom:"10px"}}>
-                <h5 style={{color: "Silver"}}>Основные Категории</h5>
-                { expandedArray.map((item, index) => <span key={index}>{item.name}</span>)}
-                
+                <div style={{ marginBottom: "10px" }}>
+                    <h5 style={{ color: "Silver" }}>Основные Категории</h5>
+                    {expandedArray.map((item, index) => <span key={index}>{item.name}</span>)}
+
                 </div>
-                                         <div>
-                <h5 style={{color: "Silver"}}>Подкатегории</h5>
-                { checkedArray.map((item, index) => <span key={index}>{item.name}</span>)}
+                <div>
+                    <h5 style={{ color: "Silver" }}>Подкатегории</h5>
+                    {checkedArray.map((item, index) => <span key={index}>{item.name}</span>)}
                 </div>
             </Modal>
         );
@@ -225,14 +225,31 @@ const Category = (props) => {
             <Container>
                 <Row>
                     <Col md={12}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <h3>Категории</h3>
+                        <div className="categoryPage">
                             <div className="actionBtnContainer">
                                 <span>Действие: </span>
-                                <button className="btn btn-secondary" onClick={handleShow}><IoIosAdd /> <span>Добавить</span></button>
-                                <button className="btn btn-secondary" onClick={deleteCategory}><IoIosTrash /> <span>Удалить</span></button>
-                                <button className="btn btn-secondary" onClick={updateCategory}><IoIosCloudUpload /> <span>Редактировать</span></button>
+                                <div className="actionBtnContainer__btnBox">
+                                    <button
+                                        className="btn btn-secondary"
+                                        onClick={handleShow}>
+                                        <IoIosAdd />
+                                        <span>Добавить</span>
+                                    </button>
+                                    <button
+                                        className="btn btn-secondary"
+                                        onClick={deleteCategory}>
+                                        <IoIosTrash />
+                                        <span>Удалить</span>
+                                    </button>
+                                    <button
+                                        className="btn btn-secondary"
+                                        onClick={updateCategory}>
+                                        <IoIosCloudUpload />
+                                        <span>Редактировать</span>
+                                    </button>
+                                </div>
                             </div>
+                            <h3>Категории</h3>
 
                         </div>
 

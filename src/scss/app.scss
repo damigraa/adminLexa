@@ -11,3 +11,50 @@ body{
 }
 
 
+.nav-itemContainer{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    li{
+        padding: 10px;
+        cursor: pointer;
+    }
+}
+.navBarNameContainer{
+    @media(max-width: 500px){
+        display: none;
+    }
+}
+//svg для категорий
+.rct-collapse.rct-collapse-btn{
+    position: relative;
+    // &:hover{
+    //     &::after{
+    //         display: block;
+    //     }  
+    // }
+    // &::after{
+    //     content: 'Развернуть, свернуть';
+    //     display: none;
+    //     position: absolute;
+    //     border-radius: 5px;
+    //     left: -85px;
+    //     top: 0;
+    //     color: rgb(210, 210, 210);
+    //     width: 100px;
+    //     height: 40px;
+    //     background-color: rgba(0,0,0,.5);
+    // }
+    svg{
+        width: 25px;
+        height: 25px;
+        padding: 5px;
+        color: rgb(40, 134, 216);
+    }
+}
+.rct-node.rct-node-parent.rct-node-collapsed{
+    margin-bottom: 20px;
+}
+.rct-node-icon{
+    display: none;
+}

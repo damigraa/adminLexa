@@ -36,9 +36,11 @@ const ContainerProductPage = () => {
     ]
     return (
         <Layout sidebar>
-            <div>
+            <div style={{
+                marginTop: "20px"
+            }}>
                 <BackButton
-                    text="На главную"
+                    // text="На главную"
                     href="/"
                 />
             </div>

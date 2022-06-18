@@ -43,7 +43,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "startOne": "set PORT=4000 && react-scripts start",
+    "startOne": "set PORT=3000 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

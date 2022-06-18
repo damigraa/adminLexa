@@ -19,12 +19,36 @@ const PortfolioPage = () => {
     const [portfolioDetailModal, setPortfolioDetailModal] = useState(false);
     const [portfolioDetails, setBlogDetails] = useState(null);
     const [currentId, setCurrentId] = useState(null)
+
+    const [portfolioForm, setPortfolioForm] = useState({
+        title: "",
+        titleTwo: "",
+        videoHref: "",
+        description: "",
+        city: "",
+    })
+    const clear = () => {
+        setCurrentId(null)
+        setPortfolioForm({
+            title: "",
+            titleTwo: "",
+            videoHref: "",
+            description: "",
+            city: "",
+            images: []
+        })
+    }
+
+
     const dispatch = useDispatch();
 
     const portfolio = useSelector((state) => state.portfolio.portfolio)
 
     const handleShow = () => setShow(true)
-    const handleClose = () => setShow(false)
+    const handleClose = () => {
+        setShow(false)
+        clear()
+    }
 
     useEffect(() => {
         dispatch(getPortfolio())
@@ -57,9 +81,10 @@ const PortfolioPage = () => {
             backButtonProduct
             title="Портфолио"
             // productSort
-            fullFunctional
+            mediumFunctional
             get={getPortfolio}
             handleShow={handleShow}
+            backHref
         >
 
 
@@ -78,6 +103,8 @@ const PortfolioPage = () => {
                 </Row>
             </Container>
             <AddPortfolio
+                portfolioForm={portfolioForm}
+                setPortfolioForm={setPortfolioForm}
                 show={show}
                 handleClose={handleClose}
                 currentId={currentId}

@@ -1,13 +1,13 @@
 import React from 'react';
 import Input from '../../../components/UI/Input';
 import Modal from '../../../components/UI/Modal';
-import {Row, Col} from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 
 const UpdateCategoriesModal = (props) => {
 
     const {
-        show, 
+        show,
         handleClose,
         modalTitle,
         size,
@@ -28,16 +28,13 @@ const UpdateCategoriesModal = (props) => {
             modalTitle={modalTitle}
             size={size}
         >
-            <Row>
-                <Col>
-                    <h6>Редактор</h6>
-                </Col>
-            </Row>
+
             {
                 expandedArray.length > 0 &&
                 expandedArray.map((item, index) =>
                     <Row key={index}>
                         <Col>
+                            <p>Переименовать</p>
                             <Input
                                 value={item.name}
                                 placeholder={`Category Name`}
@@ -45,6 +42,7 @@ const UpdateCategoriesModal = (props) => {
                             />
                         </Col>
                         <Col>
+                            <p>Изменить категорию</p>
                             <select
                                 className="form-control"
                                 value={item.parentId}
@@ -57,7 +55,7 @@ const UpdateCategoriesModal = (props) => {
                                 }
                             </select>
                         </Col>
-                        <Col>
+                        {/* <Col>
                             <select
                                 className="form-control"
                                 value={item.type}
@@ -68,23 +66,24 @@ const UpdateCategoriesModal = (props) => {
                                 <option value="product">Продукт</option>
                                 <option value="page">Баннеры</option>
                             </select>
-                        </Col>
+                        </Col> */}
                     </Row>
                 )
             }
-            <h6>Редактировать Категорию</h6>
             {
                 checkedArray.length > 0 &&
                 checkedArray.map((item, index) =>
                     <Row key={index}>
                         <Col>
-                            <Input
-                                value={item.name}
-                                placeholder={`Category Name`}
-                                onChange={(e) => handleCategoryInput('name', e.target.value, index, 'checked')}
-                            />
+                            <p>Переименовать</p>
+                                    <Input
+                                        value={item.name}
+                                        placeholder={`Category Name`}
+                                        onChange={(e) => handleCategoryInput('name', e.target.value, index, 'checked')}
+                                    />
                         </Col>
                         <Col>
+                            <p>Изменить категорию</p>
                             <select
                                 className="form-control"
                                 value={item.parentId}
@@ -97,7 +96,7 @@ const UpdateCategoriesModal = (props) => {
                                 }
                             </select>
                         </Col>
-                        <Col>
+                        {/* <Col>
                             <select
                                 className="form-control"
                                 value={item.type}
@@ -109,7 +108,7 @@ const UpdateCategoriesModal = (props) => {
                                 <option value="product">Продукт</option>
                                 <option value="page">Баннеры</option>
                             </select>
-                        </Col>
+                        </Col> */}
                     </Row>
                 )
             }

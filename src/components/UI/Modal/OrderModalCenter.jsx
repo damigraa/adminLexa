@@ -27,7 +27,7 @@ const OrderModalCenter = (props) => {
                 <h4 className="text-center">История заказа</h4>
                 <div className="row">
                     <div className="col-5">
-                        <ul class="events">
+                        <ul className="events">
                             {details.orderStatus.map((status) => (
                                 <>
                                     <li className="orderStatus">
