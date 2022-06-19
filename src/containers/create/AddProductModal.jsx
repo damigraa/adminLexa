@@ -6,14 +6,12 @@ import Modal from '../../components/UI/Modal';
 import { useSelector, useDispatch } from 'react-redux';
 import { addProduct, getGraniteTiles, getBlog, updateProductById } from '../../actions';
 import { v4 as uuidv4 } from 'uuid';
-// import MultipleSelectChip from '../../siteSetting/containers/Chip';
 import { getTombstoneCurb } from './../../actions/components/tombstoneCurb';
 
 
 export const AddProductModal = ({ show, handleClose, setCurrentId, currentId, productForm, setProductForm, clear }) => {
     const dispatch = useDispatch();
     const category = useSelector((state) => state.category)
-    // const standMonument = useSelector((state) => state.standMonument.standMonument)
     const tombstoneCurb = useSelector((state) => state.tombstoneCurb.tombstoneCurb)
     const graniteTiles = useSelector((state) => state.graniteTiles.graniteTiles)
     const product = useSelector((state) => currentId ? state.product.products.find((m) => m._id === currentId) : null)
@@ -22,27 +20,6 @@ export const AddProductModal = ({ show, handleClose, setCurrentId, currentId, pr
     const [productPrice, setProductPrice] = useState([
         { id: uuidv4(), newPrice: '', size: '' },
     ]);
-    // const handleChangeInput = (id, event) => {
-    //     const newInputFields = productPrice.map(i => {
-    //         if (id === i.id) {
-    //             i[event.target.name] = event.target.value
-    //         }
-    //         return i;
-    //     })
-
-    //     setProductPrice(newInputFields);
-    // }
-
-    // const handleAddFields = () => {
-    //     setProductPrice([...productPrice, { id: uuidv4(), newPrice: '', size: '' }])
-    // }
-
-    // const handleRemoveFields = id => {
-    //     const values = [...productPrice];
-    //     values.splice(values.findIndex(value => value.id === id), 1);
-    //     setProductPrice(values);
-    // }
-
     useEffect(() => {
         if (product) setProductForm(product)
     }, [product])
@@ -107,32 +84,6 @@ export const AddProductModal = ({ show, handleClose, setCurrentId, currentId, pr
             modalTitle={!currentId ? "Добавить новый продукт" : "Изменить текст в товаре"}
             onSubmit={submitProductForm}
         >
-            {/* {productPrice.map(item => (
-                <div key={item.id}>
-                    <TextField
-                        name="newPrice"
-                        label="newPrice"
-                        variant="filled"
-                        value={item.newPrice}
-                        onChange={event => handleChangeInput(item.id, event)}
-                    />
-                    <TextField
-                        name="size"
-                        label="size"
-                        variant="filled"
-                        value={item.size}
-                        onChange={event => handleChangeInput(item.id, event)}
-                    />
-                    <IconButton disabled={productPrice.length === 1} onClick={() => handleRemoveFields(item.id)}>
-                        <RemoveIcon />
-                    </IconButton>
-                    <IconButton
-                        onClick={handleAddFields}
-                    >
-                        <AddIcon />
-                    </IconButton>
-                </div>
-            ))} */}
             <Input
                 label="Название"
                 name="name"
@@ -175,19 +126,7 @@ export const AddProductModal = ({ show, handleClose, setCurrentId, currentId, pr
                 placeholder={`Вес`}
                 onChange={(e) => setProductForm({ ...productForm, weight: e.target.value })}
             />
-            {/* <MultipleSelectChip
-                title="Подставки"
-                items={standMonument}
-            />
-            <MultipleSelectChip
-                title="Цветники"
-                items={tombstoneCurb}
-            />
-            <MultipleSelectChip
-                title="Гранитная плитка"
-                items={graniteTiles}
 
-            /> */}
             {
                 !currentId ? <select
                     className="form-control"

@@ -23,15 +23,17 @@ import {
 import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 import UpdateCategoriesModal from './components/UpdateCategoriesModal';
 import AddCategoryModal from './components/AddCategoryModal';
+import CategoryList from './CategoryList';
 
 
 
 const Category = (props) => {
 
     const category = useSelector(state => state.category);
+    console.log(category.categories)
     const [categoryName, setCategoryName] = useState('');
     const [parentCategoryId, setParentCategoryId] = useState('');
-    const [categoryImage, setCategoryImage] = useState('');
+    const [categoryImage, setCategoryImage] = useState([]);
     const [show, setShow] = useState(false);
     const [checked, setChecked] = useState([]);
     const [expanded, setExpanded] = useState([]);
@@ -42,11 +44,11 @@ const Category = (props) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        dispatch(getAllCategory())
 
         if (!category.loading) {
             setShow(false);
         }
-
     }, [category.loading]);
 
 
@@ -222,7 +224,7 @@ const Category = (props) => {
 
     return (
         <Layout sidebar>
-            <Container>
+            <Container fluid>
                 <Row>
                     <Col md={12}>
                         <div className="categoryPage">
@@ -255,24 +257,26 @@ const Category = (props) => {
 
                     </Col>
                 </Row>
-                <Row>
-                    <Col md={12}>
-                        <CheckboxTree
-                            nodes={renderCategories(category.categories)}
-                            checked={checked}
-                            expanded={expanded}
-                            onCheck={checked => setChecked(checked)}
-                            onExpand={expanded => setExpanded(expanded)}
-                            icons={{
-                                check: <IoIosCheckbox />,
-                                uncheck: <IoIosCheckboxOutline />,
-                                halfCheck: <IoIosCheckboxOutline />,
-                                expandClose: <IoIosArrowForward />,
-                                expandOpen: <IoIosArrowDown />
-                            }}
-                        />
-                    </Col>
-                </Row>
+                <Container>
+                    <Row>
+                        <Col md={12} >
+                            <CheckboxTree
+                                nodes={renderCategories(category.categories)}
+                                checked={checked}
+                                expanded={expanded}
+                                onCheck={checked => setChecked(checked)}
+                                onExpand={expanded => setExpanded(expanded)}
+                                icons={{
+                                    check: <IoIosCheckbox />,
+                                    uncheck: <IoIosCheckboxOutline />,
+                                    halfCheck: <IoIosCheckboxOutline />,
+                                    expandClose: <IoIosArrowForward />,
+                                    expandOpen: <IoIosArrowDown />
+                                }}
+                            />
+                        </Col>
+                    </Row>
+                </Container>
             </Container>
             <AddCategoryModal
                 show={show}
@@ -298,6 +302,7 @@ const Category = (props) => {
                 categoryList={categoryList}
             />
             {renderDeleteCategoryModal()}
+            <CategoryList category={category.categories} />
         </Layout>
     )
 

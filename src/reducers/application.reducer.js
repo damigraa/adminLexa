@@ -18,3 +18,4 @@ export default (state = initialState, action) => {
 }
 
 export const setApplication = (applications) => ({ type: applicationConstants.GET_ALL_APPLICATION_SUCCESS, payload: applications })
+ 

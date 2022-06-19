@@ -46,4 +46,4 @@ export const deleteApplicationById = (id) => async (dispatch) => {
   } catch (error) {
     console.log(error);
   }
-}
+} 

@@ -12,6 +12,7 @@ const RenderBurgerMenu = ({ items, user, show, setShow, title, handleShow }) => 
         >
 
             <div className="burgerMenu__header-container">
+
                 <div className="burgerMenu__close-icon-container">
                     <div className="burgerMenu__close-icon" onClick={() => { setShow(false) }}>
                         <IoMdClose />
@@ -54,8 +55,7 @@ const RenderBurgerMenu = ({ items, user, show, setShow, title, handleShow }) => 
                     Выйти с аккаунта
                 </div>
             </div>
-
-        </div >
+        </div>
     )
 }
 

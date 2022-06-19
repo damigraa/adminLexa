@@ -2,7 +2,9 @@ import { productConstants } from "../actions/constants";
 
 const initialState = {
     products: [],
-    view: 'list'
+    view: 'list',
+    currentCategory: ""
+
 };
 
 export default (state = initialState, action) => {
@@ -18,15 +20,21 @@ export default (state = initialState, action) => {
             }
             break;
         case productConstants.SET_VIEW:
-            state = { 
+            state = {
                 ...state,
                 view: action.payload
+            }
+            break;
+        case productConstants.SET_CURRENT_CATEGORY:
+            state = {
+                ...state,
+                currentCategory: action.payload
             }
             break;
     }
 
     return state;
 }
-
+export const setCurrentCategory = (currentCategory) => ({ type: productConstants.SET_CURRENT_CATEGORY, payload: currentCategory })
 export const setFileView = (payload) => ({ type: productConstants.SET_VIEW, payload })
 export const setProduct = (products) => ({ type: productConstants.GET_ALL_PRODUCTS_SUCCESS, payload: products })

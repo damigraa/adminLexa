@@ -42,11 +42,11 @@ const Header = (props) => {
       text: "Продукты",
       icon: <CurtainsClosedIcon />
     },
-    {
-      href: "/orders",
-      text: "Заказы",
-      icon: <FilterFramesIcon />
-    },
+    // {
+    //   href: "/orders",
+    //   text: "Заказы",
+    //   icon: <FilterFramesIcon />
+    // },
     {
       href: "/portfolio",
       text: "Портфолио",
@@ -62,11 +62,11 @@ const Header = (props) => {
       text: "Заявки",
       icon: <BorderColorIcon />
     },
-    {
-      href: "/user",
-      text: "Пользователи",
-      icon: <PersonOutlineIcon />
-    },
+    // {
+    //   href: "/user",
+    //   text: "Пользователи",
+    //   icon: <PersonOutlineIcon />
+    // },
     {
       href: "/siteSetting",
       text: "Настройки сайта",
