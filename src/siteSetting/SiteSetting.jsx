@@ -5,12 +5,13 @@ import { NavLink } from 'react-router-dom';
 const SiteSetting = () => {
     return (
         <Layout sidebar>
-            <h2>Выберите что нужно изменить</h2>
-            <ul className="siteSetting">
-                {/* <li><NavLink to={"/headerSetting"}>Изменить шапку</NavLink></li>
+            <div className="siteSettingMainContainer">
+                <h2>Выберите что нужно изменить</h2>
+                <ul className="siteSetting">
+                    {/* <li><NavLink to={"/headerSetting"}>Изменить шапку</NavLink></li>
                 <li><NavLink to={"/promotionsSetting"}>Добавить Акции</NavLink></li> */}
-                <li><NavLink to={"/mainImageSetting"}>Изображение главной страницы </NavLink></li>
-                {/* <li><NavLink to={"/manufactureSetting"}>Мы производители </NavLink></li>
+                    <li><NavLink to={"/mainImageSetting"}>Изображение главной страницы </NavLink></li>
+                    {/* <li><NavLink to={"/manufactureSetting"}>Мы производители </NavLink></li>
                 <li><NavLink to={"/comeToUsSetting"}>Приходи к нам </NavLink></li>
                 <li><NavLink to={"/weWorkOnline"}>Работаем онлайн</NavLink></li>
                 <li><NavLink to={"/chooseMemorialPhotos"}>Как выбрать памятник Изображения</NavLink></li>
@@ -22,9 +23,10 @@ const SiteSetting = () => {
                 <li><NavLink to={"/catalog-title"}>Заголовок Каталога</NavLink></li>
                 <li><NavLink to={"/footer"}>Подвал изменить фото</NavLink></li> */}
 
-                {/* <li style={{ marginTop: "20px" }}><NavLink to={"/chip"}>Для тестов</NavLink></li> */}
+                    {/* <li style={{ marginTop: "20px" }}><NavLink to={"/chip"}>Для тестов</NavLink></li> */}
 
-            </ul>
+                </ul>
+            </div>
         </Layout>
     )
 }

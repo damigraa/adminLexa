@@ -1,0 +1,19 @@
+.tableContainer{
+    max-width: 1000px;
+    display: block;
+    @media(max-width: 500px){
+        display: none;
+    }
+}
+.tableContainerMobile{
+    display: none;
+    &__time{
+        color: rgb(181, 181, 181);
+        font-size: 13px;
+    }
+
+
+    @media(max-width: 500px){
+        display: block;
+    }
+}
