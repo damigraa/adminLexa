@@ -92,7 +92,7 @@ const Blog = () => {
             />
           </Col>
         </Row>
-      </Container>
+      </Container> 
       <AddBlog
         setBlogForm={setBlogForm}
         blogForm={blogForm}

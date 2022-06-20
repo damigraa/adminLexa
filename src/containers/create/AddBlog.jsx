@@ -93,7 +93,7 @@ export const AddBlog = ({ blogForm, setBlogForm, show, handleClose, setCurrentId
                 required
                 multiple
             />
-            <input multiple={true} onChange={(event) => fileUploadHandler(event)} type="file" id="disk__upload-input" className="disk__upload-input" />
+            {/* <input multiple={true} onChange={(event) => fileUploadHandler(event)} type="file" id="disk__upload-input" className="disk__upload-input" /> */}
 
             {/* <button onClick={(e) => clearAddedPhotos(e)}>Удалить фото</button> */}
         </Modal>
