@@ -223,7 +223,7 @@ const Category = (props) => {
     const categoryList = createCategoryList(category.categories);
 
     return (
-        <Layout sidebar>
+        <Layout sidebar backButton>
             <Container fluid>
                 <Row>
                     <Col md={12}>

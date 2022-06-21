@@ -16,10 +16,10 @@ export const getInitialData = () => {
       //   type: categoryConstansts.GET_ALL_CATEGORIES_SUCCESS,
       //   payload: { categories },
       // });
-      dispatch({
-        type: productConstants.GET_ALL_PRODUCTS_SUCCESS,
-        payload: { products },
-      });
+      // dispatch({
+      //   type: productConstants.GET_ALL_PRODUCTS_SUCCESS,
+      //   payload: { products },
+      // });
       // dispatch({
       //   type: orderConstants.GET_CUSTOMER_ORDER_SUCCESS,
       //   payload: { orders },

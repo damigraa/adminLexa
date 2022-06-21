@@ -17,7 +17,6 @@ const BurgerMenu = ({ title, items }) => {
     };
 
     const rootEl = useRef(null);
-    console.log(rootEl.current)
     useEffect(() => {
         const onClick = e => rootEl.current.contains(e.target) || setShow(false);
         document.addEventListener('click', onClick);

@@ -46,7 +46,7 @@ const CategoryList = ({ category, setSlideIndex, slideIndex, setName, setObj, cu
                                 <div
                                     className={mainCategoryIndex === index + 1 ? "productList__categoryItemContainer active" : "productList__categoryItemContainer"}>
                                     {obj.children.map((childrenCategory, index) => (
-                                        <Link to="products"
+                                        <Link to={`products/${childrenCategory.slug}?${childrenCategory._id}`}
                                             // onClick={() => handlerCategoryList(index, childrenCategory)}
                                             className={slideIndex === index + 1 ? "productList__categoryItemBox active" : "productList__categoryItemBox"}
                                         >

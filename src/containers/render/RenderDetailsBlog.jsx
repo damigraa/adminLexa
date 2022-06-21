@@ -1,13 +1,18 @@
 import React from 'react'
-import { Container, Row, Col, Table } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { generatePublicUrl } from '../../urlConfig';
 import Modal from '../../components/UI/Modal/index';
+import RenderImgSliderModal from './../../components/ProductImgSliderModal/RenderImgSliderModal';
 
 
-export const DetailsBlog = ({ blogDetailModal, setBlogDetailModal, blogDetails }) => {
+export const RenderDetailsBlog = ({ setShowModalImg, showModalImg, blogDetailModal, setBlogDetailModal, blogDetails }) => {
     if (!blogDetails) {
         return null;
     }
+    const handleShowModalImg = () => {
+        setShowModalImg(true)
+    }
+
 
     return (
         <Modal
@@ -43,14 +48,21 @@ export const DetailsBlog = ({ blogDetailModal, setBlogDetailModal, blogDetails }
                 <Col>
                     <label className="key">Фотографии</label>
                     <div style={{ display: "flex" }}>
-                        {blogDetails.images.map((picture) => (
-                            <div className="productImgContainer">
+                        {blogDetails.images.map((picture, index) => (
+                            <div
+                                onClick={handleShowModalImg}
+                                className="productImgContainer" >
                                 <img src={generatePublicUrl(picture.img)} />
                             </div>
-                        ))} 
+                        ))}
                     </div>
                 </Col>
             </Row>
+            <RenderImgSliderModal
+                item={blogDetails.images}
+                setShowModalImg={setShowModalImg}
+                showModalImg={showModalImg}
+            />
         </Modal>
     );
 }

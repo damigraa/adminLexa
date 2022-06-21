@@ -4,18 +4,17 @@ import { Container, Row, Col, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteBlog, getBlog } from './../../actions';
 import { MainContainer } from './../MainContainer';
-// import BackButton from './../../siteSetting/components/BackButton';
 import { RenderBlog } from "../render/RenderBlog";
-import { DetailsBlog } from '../render/DetailsBlog';
 import { AddBlog } from '../create/AddBlog.jsx';
 import ModalConfirm from './../../components/BurgerMenu/ModalConfirm';
-
+import { RenderDetailsBlog } from "../render/RenderDetailsBlog";
 
 const Blog = () => {
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
 
+  const [showModalImg, setShowModalImg] = useState(false);
   const [show, setShow] = useState(false);
   const [blogDetailModal, setBlogDetailModal] = useState(false);
   const [blogDetails, setBlogDetails] = useState(null);
@@ -70,6 +69,10 @@ const Blog = () => {
       />
     )
   }
+
+
+
+
   return (
     <MainContainer
       backButtonProduct
@@ -78,6 +81,7 @@ const Blog = () => {
       get={getBlog}
       handleShow={handleShow}
       backHref
+      title="Список блогов"
     >
       <Container>
         <Row>
@@ -92,7 +96,7 @@ const Blog = () => {
             />
           </Col>
         </Row>
-      </Container> 
+      </Container>
       <AddBlog
         setBlogForm={setBlogForm}
         blogForm={blogForm}
@@ -101,12 +105,15 @@ const Blog = () => {
         currentId={currentId}
         setCurrentId={setCurrentId}
       />
-      <DetailsBlog
+      <RenderDetailsBlog
+        showModalImg={showModalImg}
+        setShowModalImg={setShowModalImg}
         blogDetailModal={blogDetailModal}
         blogDetails={blogDetails}
         setBlogDetailModal={setBlogDetailModal}
       />
       {renderDeleteModal()}
+
     </MainContainer >
   );
 };

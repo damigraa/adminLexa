@@ -91,9 +91,9 @@ const Applications = (props) => {
                                     ))}
                                 </div>
                             </>
-                            : 
+                            :
                             <label className="key">Покупатель не добавлял фото</label>
-                    }
+                        }
 
                     </Col>
                 </Row>
@@ -103,6 +103,8 @@ const Applications = (props) => {
 
     return (
         <MainContainer
+            backButtonProduct
+            backHref
             search={searchApplication}
             get={getApplication}
             title={"Запросы на Звонок"}

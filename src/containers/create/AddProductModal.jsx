@@ -5,21 +5,15 @@ import Input from '../../components/UI/Input/index';
 import Modal from '../../components/UI/Modal';
 import { useSelector, useDispatch } from 'react-redux';
 import { addProduct, getGraniteTiles, getBlog, updateProductById } from '../../actions';
-import { v4 as uuidv4 } from 'uuid';
 import { getTombstoneCurb } from './../../actions/components/tombstoneCurb';
 
 
 export const AddProductModal = ({ show, handleClose, setCurrentId, currentId, productForm, setProductForm, clear }) => {
     const dispatch = useDispatch();
     const category = useSelector((state) => state.category)
-    const tombstoneCurb = useSelector((state) => state.tombstoneCurb.tombstoneCurb)
-    const graniteTiles = useSelector((state) => state.graniteTiles.graniteTiles)
     const product = useSelector((state) => currentId ? state.product.products.find((m) => m._id === currentId) : null)
     const [productPictures, setProductPictures] = useState("");
-
-    const [productPrice, setProductPrice] = useState([
-        { id: uuidv4(), newPrice: '', size: '' },
-    ]);
+   
     useEffect(() => {
         if (product) setProductForm(product)
     }, [product])
@@ -39,12 +33,6 @@ export const AddProductModal = ({ show, handleClose, setCurrentId, currentId, pr
 
         return options;
     };
-
-
-    const clearAddedPhotos = () => {
-        setProductPictures([])
-    }
-
     const submitProductForm = () => {
         if (currentId) {
             dispatch(updateProductById(currentId, productForm))
@@ -57,7 +45,6 @@ export const AddProductModal = ({ show, handleClose, setCurrentId, currentId, pr
             form.append("price", productForm.price);
             form.append("description", productForm.description);
             form.append("category", productForm.categoryId);
-            form.append("productPrice", productPrice);
             form.append("size", productForm.size);
             form.append("weight", productForm.weight);
             for (let i = 0; i < productPictures.length; i++) {
@@ -77,7 +64,7 @@ export const AddProductModal = ({ show, handleClose, setCurrentId, currentId, pr
 
     return (
         <Modal
-        
+
             show={show}
             currentId={currentId}
             handleClose={handleClose}
@@ -151,10 +138,6 @@ export const AddProductModal = ({ show, handleClose, setCurrentId, currentId, pr
                     required
                     multiple
                 />
-                <button
-                    onClick={(e) => clearAddedPhotos(e)}>
-                    Удалить фото
-                </button>
             </> : null
             }
         </Modal>

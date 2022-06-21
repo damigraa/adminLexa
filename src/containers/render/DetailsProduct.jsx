@@ -2,9 +2,10 @@ import React from 'react'
 import { Container, Row, Col, Table } from "react-bootstrap";
 import { generatePublicUrl } from '../../urlConfig';
 import Modal from './../../components/UI/Modal/index';
+import RenderImgSliderModal from './../../components/ProductImgSliderModal/RenderImgSliderModal';
 
 
-export const DetailsProduct = ({ productDetailModal, setProductDetailModal, productDetails }) => {
+export const DetailsProduct = ({ setShowModalImg, showModalImg, handleShowModalImg, productDetailModal, setProductDetailModal, productDetails }) => {
     if (!productDetails) {
         return null;
     }
@@ -57,13 +58,20 @@ export const DetailsProduct = ({ productDetailModal, setProductDetailModal, prod
                     <label className="key">Фотографии</label>
                     <div style={{ display: "flex" }}>
                         {productDetails.productPictures.map((picture) => (
-                            <div className="productImgContainer p-1">
+                            <div
+                            onClick={handleShowModalImg}
+                            className="productImgContainer p-1">
                                 <img src={generatePublicUrl(picture.img)} />
                             </div>
                         ))}
                     </div>
                 </Col>
             </Row>
+            <RenderImgSliderModal
+                item={productDetails.productPictures}
+                setShowModalImg={setShowModalImg}
+                showModalImg={showModalImg}
+            />
         </Modal>
     );
 }

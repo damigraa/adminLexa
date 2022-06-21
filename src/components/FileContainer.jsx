@@ -21,7 +21,6 @@ const FileContainer = (props) => {
         setDeleteId(item._id)
 
     }
-    console.log(props.product)
     if (fileView === "plate") {
         return (
             <div className="fileplate">
@@ -50,7 +49,7 @@ const FileContainer = (props) => {
     } else {
         return (
             <div>
-                {!items ? <Loader /> :
+                {items.length < 0 ? "saxsxasxs" :
                     items.map((item) =>
                         <div className="file" key={item._id}>
                             <div className="file__mainContainer">

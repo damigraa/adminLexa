@@ -38,7 +38,7 @@ const MultipleSelectChip = (props) => {
 
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(getProducts())
+    // dispatch(getProducts())
   }, [])
 
 

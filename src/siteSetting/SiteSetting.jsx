@@ -4,7 +4,8 @@ import { NavLink } from 'react-router-dom';
 
 const SiteSetting = () => {
     return (
-        <Layout sidebar>
+        <Layout sidebar backButton>
+
             <div className="siteSettingMainContainer">
                 <h2>Выберите что нужно изменить</h2>
                 <ul className="siteSetting">

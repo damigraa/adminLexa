@@ -4,6 +4,33 @@ import { deletedProduct, updatedProduct } from "./api/product";
 import { productConstants } from "./constants";
 
 // new action
+
+export const getProductsBySlug = (slug, sort) => {
+  return async dispatch => {
+    try {
+      dispatch({ type: productConstants.GET_PRODUCTS_BY_SLUG_REQUEST })
+      let url = `/products/${slug}`
+      if (sort) {
+        url = `/products/${slug}?sort=${sort}`
+      }
+      const res = await axios.get(url)
+      if (res.status === 200) {
+        dispatch({
+          type: productConstants.GET_PRODUCTS_BY_SLUG_SUCCESS,
+          payload: res.data
+        })
+      } else {
+        dispatch({
+          type: productConstants.GET_PRODUCTS_BY_SLUG_FAILURE,
+        })
+      }
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+}
+
 export const getProducts = (sort) => {
   return async (dispatch) => {
     try {
@@ -49,7 +76,7 @@ export const addProduct = (form) => {
 
 export const deleteProductById = (id) => async (dispatch) => {
   try {
-    await deletedProduct(id); 
+    await deletedProduct(id);
     dispatch({ type: productConstants.DELETE_PRODUCT_BY_ID_SUCCESS, payload: id });
     dispatch(getProducts())
   } catch (error) {

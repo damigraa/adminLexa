@@ -9,11 +9,15 @@ import { DetailsProduct } from "../render/DetailsProduct";
 import { RenderProducts } from "../render/RenderProducts";
 import ModalConfirm from './../../components/BurgerMenu/ModalConfirm';
 import { deleteProductById } from './../../actions/product.action';
+import { Link } from 'react-router-dom';
+import CategoryContainer from "../../components/CategoryContainer";
 
 const Products = () => {
+  const product = useSelector((state) => state.product.products)
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
+  const [showModalImg, setShowModalImg] = useState(false);
 
   const [show, setShow] = useState(false);
   const [productDetailModal, setProductDetailModal] = useState(false);
@@ -43,19 +47,19 @@ const Products = () => {
   }
   const dispatch = useDispatch();
 
-  const product = useSelector((state) => state.product.products)
   const handleShow = () => setShow(true)
 
+  const handleShowModalImg = () => {
+    setShowModalImg(true)
+  }
   const handleClose = () => {
     clear()
     setShow(false)
 
   }
-
-  useEffect(() => {
-    dispatch(getProducts())
-  }, [])
-
+  // const showAllProductsButton = () => {
+  //   dispatch(getProducts())
+  // }
   const showProductDetailsModal = (product) => {
     setProductDetails(product);
     setProductDetailModal(true);
@@ -88,6 +92,7 @@ const Products = () => {
       handleShow={handleShow}
       title="Товары"
     >
+      <CategoryContainer />
       <Container>
         <Row>
           <Col>
@@ -113,12 +118,15 @@ const Products = () => {
         clear={clear}
       />
       <DetailsProduct
+        handleShowModalImg={handleShowModalImg}
+        setShowModalImg={setShowModalImg}
+        showModalImg={showModalImg}
         productDetailModal={productDetailModal}
         productDetails={productDetails}
         setProductDetailModal={setProductDetailModal}
       />
       {renderDeleteModal()}
-    </MainContainer>
+    </MainContainer >
   );
 };
 

@@ -82,7 +82,7 @@ export const Sort = (props) => {
         },
     ]
     useEffect(() => {
-        dispatch(props.get(sort))
+        // dispatch(props.get(sort))
     }, [sort])//добавил сорт
 
     return (

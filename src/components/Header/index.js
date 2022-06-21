@@ -25,7 +25,7 @@ const Header = (props) => {
   const handleClose = () => setShowConfirm(false);
   const handleShow = () => setShowConfirm(true);
 
-  console.log("auth", auth)
+  // console.log("auth", auth)
   const items = [
     {
       href: "/category",

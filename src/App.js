@@ -72,7 +72,7 @@ function App() {
         <PrivateRoute path="/" exact component={Home} />
         <PrivateRoute path="/page" component={NewPage} />
         <PrivateRoute path="/category" component={Category} />
-        <PrivateRoute path="/products" component={Products} />
+        <PrivateRoute path="/products/:slug" component={Products} />
         <PrivateRoute path="/image" component={GalleryPhoto} />
         <PrivateRoute path="/orders" component={Orders} />
         <PrivateRoute path="/applications" component={Applications} />

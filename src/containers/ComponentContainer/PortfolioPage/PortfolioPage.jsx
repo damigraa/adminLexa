@@ -19,6 +19,7 @@ const PortfolioPage = () => {
     const [portfolioDetailModal, setPortfolioDetailModal] = useState(false);
     const [portfolioDetails, setBlogDetails] = useState(null);
     const [currentId, setCurrentId] = useState(null)
+    const [showModalImg, setShowModalImg] = useState(false);
 
     const [portfolioForm, setPortfolioForm] = useState({
         title: "",
@@ -54,7 +55,9 @@ const PortfolioPage = () => {
         dispatch(getPortfolio())
     }, [])
 
-
+    const handleShowModalImg = () => {
+        setShowModalImg(true)
+    }
     const confirmDelete = () => {
         dispatch(deletePortfolio(deleteId))
         setShowDeleteModal(false)
@@ -111,6 +114,9 @@ const PortfolioPage = () => {
                 setCurrentId={setCurrentId}
             />
             <DetailsPortfolio
+                handleShowModalImg={handleShowModalImg}
+                setShowModalImg={setShowModalImg}
+                showModalImg={showModalImg}
                 portfolioDetailModal={portfolioDetailModal}
                 portfolioDetails={portfolioDetails}
                 setPortfolioDetailModal={setPortfolioDetailModal}

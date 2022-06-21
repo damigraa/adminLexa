@@ -13,9 +13,6 @@ export const AddBlog = ({ blogForm, setBlogForm, show, handleClose, setCurrentId
 
     const [img, setImg] = useState([]);
 
-
-
-
     useEffect(() => {
         if (blog) setBlogForm(blog)
     }, [blog])
@@ -39,24 +36,14 @@ export const AddBlog = ({ blogForm, setBlogForm, show, handleClose, setCurrentId
         }
 
     };
-
-
-
-    function fileUploadHandler(event) {
-        const files = [...event.target.files]
-        // files.forEach(file => dispatch(uploadFile(file, currentDir)))
-    }
-
     const handleProductPictures = (e) => {
         setImg([...img, e.target.files[0]]);
     };
-
-
     return (
         <Modal
             show={show}
             handleClose={handleClose}
-            modalTitle={"Добавить новый продукт"}
+            modalTitle={!currentId ? "Добавить новый блог" : "Изменить содержимое"}
             onSubmit={submitStandMonumentForm}
         >
 
@@ -81,21 +68,22 @@ export const AddBlog = ({ blogForm, setBlogForm, show, handleClose, setCurrentId
                 placeholder={"Подробное описание"}
                 onChange={(e) => setBlogForm({ ...blogForm, description: e.target.value })}
             />
-            {img.length > 0
-                ? img.map((pic, index) => (
-                    <div key={index}>{pic.name}</div>
-                ))
-                : null}
-            <input
-                type="file"
-                name="img"
-                onChange={handleProductPictures}
-                required
-                multiple
-            />
-            {/* <input multiple={true} onChange={(event) => fileUploadHandler(event)} type="file" id="disk__upload-input" className="disk__upload-input" /> */}
-
-            {/* <button onClick={(e) => clearAddedPhotos(e)}>Удалить фото</button> */}
+            {!currentId ? <>
+                {
+                    img.length > 0
+                        ? img.map((pic, index) => (
+                            <div key={index}>{pic.name}</div>
+                        ))
+                        : null
+                }
+                < input
+                    type="file"
+                    name="img"
+                    onChange={handleProductPictures}
+                    required
+                    multiple
+                />
+            </> : null}
         </Modal>
     )
 }
