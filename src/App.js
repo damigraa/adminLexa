@@ -96,10 +96,10 @@ function App() {
         <PrivateRoute path="/containerProductPage" component={LinkProductPage} />
         <PrivateRoute path="/test" component={MultipleSelectChip} />
         <PrivateRoute path="/blog" component={Blog} />
-        <PrivateRoute path="/tombstoneCurb" component={TombstoneCurb} />
-        <PrivateRoute path="/graniteTiles" component={GraniteTiles} />
+        {/* <PrivateRoute path="/tombstoneCurb" component={TombstoneCurb} /> */}
+        {/* <PrivateRoute path="/graniteTiles" component={GraniteTiles} /> */}
         <PrivateRoute path="/footer" component={Footer} />
-        <PrivateRoute path="/ceramics" component={Ceramics} />
+        {/* <PrivateRoute path="/ceramics" component={Ceramics} /> */}
         <PrivateRoute path="/cabinet" component={Cabinet} />
         <PrivateRoute path="/portfolio" component={PortfolioPage} />
 

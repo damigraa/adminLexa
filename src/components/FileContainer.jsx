@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { generatePublicUrl } from '../urlConfig'
 import Loader from './Loader';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SettingsIcon from '@mui/icons-material/Settings';
 const FileContainer = (props) => {
 
-    const { showDetailsModal, deleteFunc, setCurrentId, setShow, items, fileView,
-        setShowDeleteModal, setDeleteId
+    const { loading, showDetailsModal, deleteFunc, setCurrentId, setShow, items, fileView,
+        setShowDeleteModal, setDeleteId, setShowAll
     } = props
 
     const handleClick = (item) => {
@@ -21,10 +21,22 @@ const FileContainer = (props) => {
         setDeleteId(item._id)
 
     }
+
+    const renderEmptyItem = () => {
+        return (
+            <div className="renderEmptyItem">
+                <h3>Обьектов пока что нет, Нажмите на кнопку ниже чтобы добавить первый из них</h3>
+                <div className="renderEmptyItem__buttonContainer">
+                    <button onClick={() => setShow(true)} >Добавить первый товар</button>
+                </div>
+            </div>
+        )
+    }
+    if (loading) return <Loader />
     if (fileView === "plate") {
         return (
             <div className="fileplate">
-                {!items ? <Loader /> :
+                {!items ? renderEmptyItem() :
                     items.map((item) =>
                         <div className='file-plate' >
                             <div className="file-plate__imgContainer">
@@ -49,7 +61,7 @@ const FileContainer = (props) => {
     } else {
         return (
             <div>
-                {items.length === 0 ? <Loader /> :
+                {items.length === 0 ? renderEmptyItem() :
                     items.map((item) =>
                         <div className="file" key={item._id}>
                             <div className="file__mainContainer">

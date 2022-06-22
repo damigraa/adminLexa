@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getAllCategory } from '../actions';
 import { Link, useParams } from 'react-router-dom';
 
-const CategoryContainer = ({ showAllProductsButton, setNameCategory, setShowActiveCategory }) => {
+const CategoryContainer = ({ showAllProductsButton, setShowAll, setNameCategory, setShowActiveCategory }) => {
     const category = useSelector((state) => state.category.categories)
 
     const [showCategoryList, setShowCategoryList] = useState(null)

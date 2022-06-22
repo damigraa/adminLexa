@@ -15,18 +15,19 @@ import CategoryContainer from "../../components/CategoryContainer";
 const Products = () => {
   const product = useSelector((state) => state.product.products)
   const activeCategory = useSelector(state => state.product.activeCategory)
-  
+  const [showAll, setShowAll] = useState(false)
+
   const [showActiveCategory, setShowActiveCategory] = useState(activeCategory);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
   const [showModalImg, setShowModalImg] = useState(false);
   const [nameCategory, setNameCategory] = useState("");
-  
+
   const [show, setShow] = useState(false);
   const [productDetailModal, setProductDetailModal] = useState(false);
   const [productDetails, setProductDetails] = useState(null);
   const [currentId, setCurrentId] = useState(null)
-  
+
   const [productForm, setProductForm] = useState({
     name: "",
     quantity: "",
@@ -36,7 +37,6 @@ const Products = () => {
     size: "",
     weight: "",
   })
-  console.log(showActiveCategory)
   const clear = () => {
     setCurrentId(null)
     setProductForm({
@@ -63,6 +63,8 @@ const Products = () => {
   }
   const showAllProductsButton = () => {
     dispatch(getProducts())
+    setShowAll(true)
+
   }
   const showProductDetailsModal = (product) => {
     setProductDetails(product);
@@ -97,7 +99,8 @@ const Products = () => {
       title="Товары"
     >
       <CategoryContainer
-      setShowActiveCategory={setShowActiveCategory}
+        setShowAll={setShowAll}
+        setShowActiveCategory={setShowActiveCategory}
         showAllProductsButton={showAllProductsButton}
         setNameCategory={setNameCategory}
       />
@@ -108,6 +111,7 @@ const Products = () => {
         <Row>
           <Col>
             <RenderProducts
+              showAll={showAll}
               setDeleteId={setDeleteId}
               setShowDeleteModal={setShowDeleteModal}
               showProductDetailsModal={showProductDetailsModal}

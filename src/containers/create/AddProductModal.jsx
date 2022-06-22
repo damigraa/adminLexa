@@ -18,9 +18,9 @@ export const AddProductModal = ({ show, handleClose, setCurrentId, currentId, pr
         if (product) setProductForm(product)
     }, [product])
     useEffect(() => {
-        dispatch(getBlog())
-        dispatch(getTombstoneCurb())
-        dispatch(getGraniteTiles())
+        // dispatch(getBlog())
+        // dispatch(getTombstoneCurb())
+        // dispatch(getGraniteTiles())
     }, [])
 
     const createCategoryList = (categories, options = []) => {

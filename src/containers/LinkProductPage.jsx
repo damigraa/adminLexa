@@ -10,7 +10,7 @@ const ContainerProductPage = () => {
     let prodArray = [
         {
             text: "Основная продукция",
-            href: "/products",
+            href: "/products/all",
             photo: "https://megapolisgroup.spb.ru/templates/yootheme/cache/vol1-b53f55df.webp"
         },
         // {

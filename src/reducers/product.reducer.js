@@ -6,6 +6,7 @@ const initialState = {
     activeCategory: 1,
     currentCategory: "",
     totalCount: 0,
+    loading: false
 
 };
 
@@ -25,7 +26,8 @@ export default (state = initialState, action) => {
             state = {
                 ...state,
                 products: action.payload.products,
-                totalCount: action.payload.total__count
+                totalCount: action.payload.total__count,
+                loading: false
 
             };
             break;
@@ -35,10 +37,23 @@ export default (state = initialState, action) => {
                 loading: false
             };
             break;
+        case productConstants.GET_ALL_PRODUCTS_REQUEST:
+            state = {
+                ...state,
+                loading: true
+            }
+            break;
         case productConstants.GET_ALL_PRODUCTS_SUCCESS:
             state = {
                 ...state,
-                products: action.payload.products
+                products: action.payload.products,
+                loading: false
+            }
+            break;
+        case productConstants.GET_ALL_PRODUCTS_FAILURE:
+            state = {
+                ...state,
+                loading: false
             }
             break;
         case productConstants.SET_VIEW:
