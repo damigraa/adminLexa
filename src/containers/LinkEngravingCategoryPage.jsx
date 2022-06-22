@@ -15,7 +15,6 @@ const ContainerEngravingCategoryPage = () => {
     const [currentId, setCurrentId] = useState(null)
     const handleShow = () => setShow(true)
     const handleClose = () => setShow(false)
-    console.log("categoryEngraving", categoryEngraving)
 
     return (
         <MainContainer

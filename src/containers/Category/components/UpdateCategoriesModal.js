@@ -18,7 +18,6 @@ const UpdateCategoriesModal = (props) => {
         onSubmit
     } = props;
 
-    // console.log({expandedArray, checkedArray}) 
 
     return (
         <Modal

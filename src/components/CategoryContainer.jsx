@@ -3,47 +3,58 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getAllCategory } from '../actions';
 import { Link, useParams } from 'react-router-dom';
 
-const CategoryContainer = () => {
+const CategoryContainer = ({ showAllProductsButton, setNameCategory, setShowActiveCategory }) => {
     const category = useSelector((state) => state.category.categories)
 
-    const [categoryIndex, setCategoryIndex] = useState(1)
+    const [showCategoryList, setShowCategoryList] = useState(null)
+    const [categoryIndex, setCategoryIndex] = useState(null)
     const [slideIndex, setSlideIndex] = useState(1)
     const dispatch = useDispatch()
-    const { slug } = useParams()
     useEffect(() => {
         dispatch(getAllCategory())
     }, [])
+    const editCategoryIndex = (category) => {
+        setShowActiveCategory(category._id)
+        setNameCategory(category.name)
+        setCategoryIndex(category._id)
+        console.log(category._id)
+    }
+    const renderFilter = (categories) => {
+        let myCategories = [];
+        for (let category of categories) {
+            myCategories.push(
+
+                <div
+                    onClick={() => editCategoryIndex(category)}
+                    className="categoryContainer__mainContainer"
+                    key={category.name}>
+
+                    {
+                        category.parentId ? <Link
+                            className={categoryIndex === category._id ? "categoryContainer__item active" : "categoryContainer__item"}
+                            to={`/products/${category.slug}?cid=${category._id}]`}>
+                            {category.name}
+                        </Link> : null
+                        // <span>{category.name}</span> 
+                    }
+                    {category.children.length > 0 ? (<div className="categoryContainer__item">{renderFilter(category.children)}</div>) : null}
+                </div>
+            );
+        }
+        return myCategories;
+    }
     return (
         <div className="categoryContainer">
-            <h2>Категории</h2>
-            <div>
-                {category ? category.map((obj, index) => (
-                    <div
-                        key={index}
-                        className="categoryContainer__mainContainer"
-                    >
-                        {
-                            obj.children.map((childrenCategory, index) => (
 
-                                <Link to={`/products/${childrenCategory.slug}?${childrenCategory._id}`}
-                                    className={slideIndex === index + 1 ? "categoryContainer__item active" : "categoryContainer__item"}
-                                >
-                        {console.log(childrenCategory)}
-                        <div onClick={() => setCategoryIndex(index + 1)} className={categoryIndex === index + 1 ? "categoryContainer__itemBox active" : "categoryContainer__itemBox"}>
-                            <div className="categoryContainer__item">
-                                {childrenCategory.name}
-                            </div>
-                        </div>
-                    </Link>
-                ))
-                        }
+            <div className="categoryContainer__linkContainer">
+                <div>
+                    <Link onClick={showAllProductsButton} to="all">#Все</Link>
+                </div>
 
+                {category.length > 0 ? renderFilter(category) : null}
             </div>
 
-                )) : null}
-
         </div>
-        </div >
     )
 }
 

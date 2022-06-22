@@ -14,16 +14,19 @@ import CategoryContainer from "../../components/CategoryContainer";
 
 const Products = () => {
   const product = useSelector((state) => state.product.products)
-
+  const activeCategory = useSelector(state => state.product.activeCategory)
+  
+  const [showActiveCategory, setShowActiveCategory] = useState(activeCategory);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
   const [showModalImg, setShowModalImg] = useState(false);
-
+  const [nameCategory, setNameCategory] = useState("");
+  
   const [show, setShow] = useState(false);
   const [productDetailModal, setProductDetailModal] = useState(false);
   const [productDetails, setProductDetails] = useState(null);
   const [currentId, setCurrentId] = useState(null)
-
+  
   const [productForm, setProductForm] = useState({
     name: "",
     quantity: "",
@@ -33,6 +36,7 @@ const Products = () => {
     size: "",
     weight: "",
   })
+  console.log(showActiveCategory)
   const clear = () => {
     setCurrentId(null)
     setProductForm({
@@ -57,9 +61,9 @@ const Products = () => {
     setShow(false)
 
   }
-  // const showAllProductsButton = () => {
-  //   dispatch(getProducts())
-  // }
+  const showAllProductsButton = () => {
+    dispatch(getProducts())
+  }
   const showProductDetailsModal = (product) => {
     setProductDetails(product);
     setProductDetailModal(true);
@@ -92,8 +96,15 @@ const Products = () => {
       handleShow={handleShow}
       title="Товары"
     >
-      <CategoryContainer />
+      <CategoryContainer
+      setShowActiveCategory={setShowActiveCategory}
+        showAllProductsButton={showAllProductsButton}
+        setNameCategory={setNameCategory}
+      />
       <Container>
+        <h1>
+          {nameCategory}
+        </h1>
         <Row>
           <Col>
             <RenderProducts

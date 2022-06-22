@@ -49,7 +49,7 @@ const FileContainer = (props) => {
     } else {
         return (
             <div>
-                {items.length < 0 ? "saxsxasxs" :
+                {items.length === 0 ? <Loader /> :
                     items.map((item) =>
                         <div className="file" key={item._id}>
                             <div className="file__mainContainer">

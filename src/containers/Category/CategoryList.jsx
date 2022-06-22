@@ -9,7 +9,6 @@ const CategoryList = ({ category, setSlideIndex, slideIndex, setName, setObj, cu
     const [categoryId, setCategoryId] = useState("")
 
 
-    console.log("sdcdscds", category)
     // const handlerCategoryList = (index, childrenCategory) => {
     //     setSlideIndex(index + 1)
     //     setName(childrenCategory.name)

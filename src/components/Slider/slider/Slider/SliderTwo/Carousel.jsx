@@ -12,7 +12,7 @@ const Carousel = ({ children }) => {
   const handleLeftArrowClick = () => {
     setOffset((currentOffset) => {
       const newOffset = currentOffset + PAGE_WIDTH
-      console.log(newOffset)
+      // console.log(newOffset)
       return Math.min(newOffset, 0)
     })
   }
@@ -22,7 +22,7 @@ const Carousel = ({ children }) => {
 
       const maxOffset = -(PAGE_WIDTH * (pages.length - 1))
 
-      console.log(newOffset, maxOffset)
+      // console.log(newOffset, maxOffset)
       return Math.max(newOffset, maxOffset)
     })
   }

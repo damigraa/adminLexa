@@ -25,7 +25,6 @@ const SliderMiniImg = (props) => {
     const moveDot = index => {
         setSlideIndex(index)
     }
-    console.log(" props.itemObj", props.itemObj)
     return (
 
         <div>

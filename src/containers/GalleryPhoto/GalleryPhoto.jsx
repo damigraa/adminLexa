@@ -25,7 +25,6 @@ const GalleryPhoto = (props) => {
             form.append('files', galleryPictures[i]);
         }
         dispatch(addGallery(form)).then(() => setCreateModal(false))
-        console.log(galleryPictures, form)
     }
     const MultipleFileChange = (e) => {
         setGalleryPictures(e.target.files);
