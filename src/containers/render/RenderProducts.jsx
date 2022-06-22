@@ -7,18 +7,12 @@ import { useParams } from 'react-router-dom';
 export const RenderProducts = ({ showAll, setShow, showProductDetailsModal, setCurrentId, product, setShowDeleteModal, setDeleteId }) => {
     const fileView = useSelector(state => state.product.view)
     const loading = useSelector(state => state.product.loading)
-    console.log("ldsdcsd", loading)
-    const { slug } = useParams()
+    // console.log("ldsdcsd", loading)
 
     const dispatch = useDispatch();
 
 
-    useEffect(() => {
-        dispatch(getProductsBySlug(slug))
-        if (showAll) {
-            dispatch(getProducts())
-        }
-    }, [])
+
 
     return (
         <>

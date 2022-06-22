@@ -6,7 +6,8 @@ const initialState = {
     activeCategory: 1,
     currentCategory: "",
     totalCount: 0,
-    loading: false
+    loading: false,
+    sort: ""
 
 };
 
@@ -27,6 +28,7 @@ export default (state = initialState, action) => {
                 ...state,
                 products: action.payload.products,
                 totalCount: action.payload.total__count,
+                sort: action.payload,
                 loading: false
 
             };
@@ -47,6 +49,7 @@ export default (state = initialState, action) => {
             state = {
                 ...state,
                 products: action.payload.products,
+                sort: action.payload,
                 loading: false
             }
             break;
@@ -80,5 +83,6 @@ export default (state = initialState, action) => {
 }
 export const setCurrentCategory = (currentCategory) => ({ type: productConstants.SET_CURRENT_CATEGORY, payload: currentCategory })
 export const setFileView = (payload) => ({ type: productConstants.SET_VIEW, payload })
+export const setSort = (payload) => ({ type: productConstants.SET_SORT, payload })
 export const setActiveCategory = (payload) => ({ type: productConstants.SET_ACTIVE_CATEGORY, payload })
 export const setProduct = (products) => ({ type: productConstants.GET_ALL_PRODUCTS_SUCCESS, payload: products })

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import { TextField } from '@mui/material';
+import { useParams } from 'react-router-dom';
 
 
 export function Search(props) {
@@ -50,7 +51,10 @@ export function Search(props) {
 }
 export const Sort = (props) => {
     const dispatch = useDispatch();
-    const [sort, setSort] = useState("");
+    const sortState = useSelector((state) => state.product.sort)
+    const [sort, setSort] = useState(sortState);
+    // console.log("sort", sort)
+    const { slug } = useParams()
 
     const handleChange = (event) => {
         setSort(event.target.value);
@@ -82,7 +86,14 @@ export const Sort = (props) => {
         },
     ]
     useEffect(() => {
-        // dispatch(props.get(sort))
+
+        if (props.showAll) {
+            dispatch(props.get(sort))
+        }
+        if (props.getSlug) {
+            dispatch(props.getSlug(slug, sort))
+        }
+
     }, [sort])//добавил сорт
 
     return (

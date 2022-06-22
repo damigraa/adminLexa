@@ -8,14 +8,17 @@ import { MainContainer } from '../MainContainer';
 import { DetailsProduct } from "../render/DetailsProduct";
 import { RenderProducts } from "../render/RenderProducts";
 import ModalConfirm from './../../components/BurgerMenu/ModalConfirm';
-import { deleteProductById } from './../../actions/product.action';
-import { Link } from 'react-router-dom';
+import { deleteProductById, getProductsBySlug } from './../../actions/product.action';
+import { Link, useParams } from 'react-router-dom';
 import CategoryContainer from "../../components/CategoryContainer";
 
 const Products = () => {
   const product = useSelector((state) => state.product.products)
+  const sort = useSelector((state) => state.product.sort)
+  // console.log("sortState", sort)
   const activeCategory = useSelector(state => state.product.activeCategory)
   const [showAll, setShowAll] = useState(false)
+
 
   const [showActiveCategory, setShowActiveCategory] = useState(activeCategory);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -61,11 +64,17 @@ const Products = () => {
     setShow(false)
 
   }
+  const { slug } = useParams()
+
   const showAllProductsButton = () => {
-    dispatch(getProducts())
     setShowAll(true)
+    dispatch(getProducts())
 
   }
+  useEffect(() => {
+    // dispatch(getProductsBySlug(slug, sort))
+    // dispatch(getProducts())
+  }, [])
   const showProductDetailsModal = (product) => {
     setProductDetails(product);
     setProductDetailModal(true);
@@ -89,6 +98,7 @@ const Products = () => {
   }
   return (
     <MainContainer
+      showAll={showAll}
       buttonText={"Добавить продукт"}
       backButtonProduct
       productSort
@@ -97,6 +107,7 @@ const Products = () => {
       get={getProducts}
       handleShow={handleShow}
       title="Товары"
+      getSlug={getProductsBySlug}
     >
       <CategoryContainer
         setShowAll={setShowAll}

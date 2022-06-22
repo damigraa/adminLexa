@@ -1,6 +1,9 @@
 .categoryContainer{
     max-width: 1200px;
     margin: 0 auto;
+    span{
+        display: none;
+    }
     &__linkContainer{
         // display: flex;
         align-items: center;
