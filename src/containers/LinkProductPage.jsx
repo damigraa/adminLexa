@@ -40,7 +40,7 @@ const ContainerProductPage = () => {
                 marginTop: "20px"
             }}>
                 <BackButton
-                    // text="На главную"
+                    text="На главную"
                     href="/"
                 />
             </div>

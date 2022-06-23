@@ -23,6 +23,7 @@ const RenderFunctional = (props) => {
                             get={props.get}
                         />
                         <Sort
+                            slug={props.slug}
                             getSlug={props.getSlug}
                             showAll={props.showAll}
                             productSort={props.productSort}

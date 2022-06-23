@@ -4,7 +4,7 @@ import { Container, Form, Row, Col, Button } from 'react-bootstrap';
 import Input from '../../components/UI/Input';
 import { login } from '../../actions';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Route, Navigate } from 'react-router-dom';
 
 
 const Signin = (props) => {
@@ -16,7 +16,7 @@ const Signin = (props) => {
 
     const dispatch = useDispatch();
 
-    
+
 
 
     const userLogin = (e) => {
@@ -30,17 +30,17 @@ const Signin = (props) => {
         dispatch(login(user));
     }
 
-    if(auth.authenticate){
-        return <Redirect to={`/`} />
+    if (auth.authenticate) {
+        return <Navigate to="/" />
     }
 
     return (
         <Layout>
             <Container>
                 <Row style={{ marginTop: '50px' }}>
-                    <Col md={{span: 6, offset: 3}}>
+                    <Col md={{ span: 6, offset: 3 }}>
                         <Form onSubmit={userLogin}>
-                            <Input 
+                            <Input
                                 label="Email"
                                 placeholder="Email"
                                 value={email}
@@ -48,12 +48,12 @@ const Signin = (props) => {
                                 onChange={(e) => setEmail(e.target.value)}
                             />
 
-                            <Input 
+                            <Input
                                 label="Password"
                                 placeholder="Password"
                                 value={password}
                                 type="password"
-                                onChange={(e) => setPassword(e.target.value)} 
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                             <Button variant="primary" type="submit">
                                 Войти
@@ -61,7 +61,7 @@ const Signin = (props) => {
                         </Form>
                     </Col>
                 </Row>
-                
+
             </Container>
         </Layout>
     )

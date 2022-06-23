@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Layout from "../../components/Layout";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import Input from "../../components/UI/Input";
-import { Redirect } from "react-router-dom";
+import { Navigate, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { signup } from "../../actions";
 import { useEffect } from "react";
@@ -40,16 +40,14 @@ const Signup = (props) => {
   };
 
   if (auth.authenticate) {
-    return <Redirect to={`/`} />;
+    return <Navigate to="/" />
   }
 
   // if (user.loading) {
   //   return <p>Loading...!</p>;
   // }
 
-  if(user.loading){
-    return <Redirect to={`/signin`} />
-  }
+  return <Navigate to="/signin" />
 
   return (
     <Layout>

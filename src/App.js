@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import '../src/scss/app.scss'
 import Home from './containers/Home';
@@ -66,19 +66,96 @@ function App() {
 
   }, [auth.authenticate]);
 
+
+  const pageComponentsItems = [
+    {
+      path: "/",
+      component: <Home />
+    },
+    {
+      path: "/page",
+      component: <NewPage />
+    },
+    {
+      path: "/category",
+      component: <Category />
+    },
+    {
+      path: "/products/:slug",
+      component: <Products />
+    },
+    {
+      path: "/portfolio",
+      component: <PortfolioPage />
+    },
+    {
+      path: "/orders",
+      component: <Orders />
+    },
+    {
+      path: "/applications",
+      component: <Applications />
+    },
+    {
+      path: "/users",
+      component: <Users />
+    },
+    {
+      path: "/siteSetting",
+      component: <SiteSetting />
+    },
+    {
+      path: "/headerSetting",
+      component: <HeaderSetting />
+    },
+    {
+      path: "/engravingCategory",
+      component: <ContainerEngravingCategoryPage />
+    },
+    {
+      path: "/engravingLayout/:slug",
+      component: <EngravingLayout />
+    },
+    {
+      path: "/blog",
+      component: <Blog />
+    },
+    {
+      path: "/test",
+      component: <MultipleSelectChip />
+    },
+    {
+      path: "/containerProductPage",
+      component: <LinkProductPage />
+    },
+    {
+      path: "/costDelivery",
+      component: <CostDelivery />
+    },
+    {
+      path: "/catalog-title",
+      component: <CatalogTitle />
+    },
+
+  ]
   return (
     <div className="App">
-      <Switch>
-        <PrivateRoute path="/" exact component={Home} />
-        <PrivateRoute path="/page" component={NewPage} />
-        <PrivateRoute path="/category" component={Category} />
-        <PrivateRoute path="/products/:slug" component={Products} />
-        <PrivateRoute path="/image" component={GalleryPhoto} />
-        <PrivateRoute path="/orders" component={Orders} />
-        <PrivateRoute path="/applications" component={Applications} />
-        <PrivateRoute path="/users" component={Users} />
-        <PrivateRoute path="/siteSetting" component={SiteSetting} />
-        <PrivateRoute path="/headerSetting" component={HeaderSetting} />
+
+      <Routes>
+        {pageComponentsItems.map((obj, index) => (
+          <Route
+            key={index}
+            path={obj.path}
+            element={<PrivateRoute>{obj.component}</PrivateRoute>}
+            />
+            
+            ))}
+
+            {/* <PrivateRoute path="/tombstoneCurb" component={TombstoneCurb} /> */}
+            {/* <PrivateRoute path="/graniteTiles" component={GraniteTiles} /> */}
+            {/* <PrivateRoute path="/ceramics" component={Ceramics} /> */}
+            {/* <PrivateRoute path="/cabinet" component={Cabinet} />
+        {/* <PrivateRoute path="/orders" component={Orders} />
         <PrivateRoute path="/promotionsSetting" component={Promotions} />
         <PrivateRoute path="/mainImageSetting" component={MainImage} />
         <PrivateRoute path="/manufactureSetting" component={Manufacture} />
@@ -91,24 +168,13 @@ function App() {
         <PrivateRoute path="/warranty" component={Warranty} />
         <PrivateRoute path="/paymentLI" component={PaymentLI} />
         <PrivateRoute path="/paymentAndDelivery" component={PaymentAndDeliveryContainer} />
-        <PrivateRoute path="/catalog-title" component={CatalogTitle} />
-        <PrivateRoute path="/costDelivery" component={CostDelivery} />
-        <PrivateRoute path="/containerProductPage" component={LinkProductPage} />
-        <PrivateRoute path="/test" component={MultipleSelectChip} />
-        <PrivateRoute path="/blog" component={Blog} />
-        {/* <PrivateRoute path="/tombstoneCurb" component={TombstoneCurb} /> */}
-        {/* <PrivateRoute path="/graniteTiles" component={GraniteTiles} /> */}
-        <PrivateRoute path="/footer" component={Footer} />
-        {/* <PrivateRoute path="/ceramics" component={Ceramics} /> */}
-        <PrivateRoute path="/cabinet" component={Cabinet} />
-        <PrivateRoute path="/portfolio" component={PortfolioPage} />
-
+        {/* 
         <PrivateRoute path="/engravingLayout/:slug" component={EngravingLayout} />
-        <PrivateRoute path="/engravingCategory" component={ContainerEngravingCategoryPage} />
+        <PrivateRoute path="/engravingCategory" component={ContainerEngravingCategoryPage} /> */}
 
-        <Route path="/signin" component={Signin} />
-        <Route path="/signup" component={Signup} />
-      </Switch>
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
     </div>
   );
 }

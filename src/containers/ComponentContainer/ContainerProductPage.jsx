@@ -8,7 +8,7 @@ const ContainerProductPage = (props) => {
         <>
             <BackButton
                 text="Назад"
-                href="containerProductPage"
+                href="/containerProductPage"
             />
 
             {props.children}

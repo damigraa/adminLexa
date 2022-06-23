@@ -1,10 +1,10 @@
 import React from 'react'
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link, useMatch } from 'react-router-dom';
 
 const CustomLink = (props) => {
 
     const { to, children } = props
-    const match = useRouteMatch(to)
+    const match = useMatch(to)
     return (
         <Link
             to={to}

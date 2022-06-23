@@ -14,10 +14,7 @@ import CategoryContainer from "../../components/CategoryContainer";
 
 const Products = () => {
   const product = useSelector((state) => state.product.products)
-  const sort = useSelector((state) => state.product.sort)
-  // console.log("sortState", sort)
   const activeCategory = useSelector(state => state.product.activeCategory)
-  const [showAll, setShowAll] = useState(false)
 
 
   const [showActiveCategory, setShowActiveCategory] = useState(activeCategory);
@@ -67,14 +64,18 @@ const Products = () => {
   const { slug } = useParams()
 
   const showAllProductsButton = () => {
-    setShowAll(true)
-    dispatch(getProducts())
+    dispatch(getProducts(slug))
 
   }
   useEffect(() => {
-    // dispatch(getProductsBySlug(slug, sort))
-    // dispatch(getProducts())
+    if (slug !== "all") {
+      dispatch(getProductsBySlug(slug))
+    }
+    if (slug === "all") {
+      dispatch(getProducts())
+    }
   }, [])
+  console.log(slug === "all")
   const showProductDetailsModal = (product) => {
     setProductDetails(product);
     setProductDetailModal(true);
@@ -98,7 +99,7 @@ const Products = () => {
   }
   return (
     <MainContainer
-      showAll={showAll}
+      slug={slug}
       buttonText={"Добавить продукт"}
       backButtonProduct
       productSort
@@ -110,7 +111,6 @@ const Products = () => {
       getSlug={getProductsBySlug}
     >
       <CategoryContainer
-        setShowAll={setShowAll}
         setShowActiveCategory={setShowActiveCategory}
         showAllProductsButton={showAllProductsButton}
         setNameCategory={setNameCategory}
@@ -122,7 +122,6 @@ const Products = () => {
         <Row>
           <Col>
             <RenderProducts
-              showAll={showAll}
               setDeleteId={setDeleteId}
               setShowDeleteModal={setShowDeleteModal}
               showProductDetailsModal={showProductDetailsModal}

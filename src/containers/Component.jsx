@@ -6,6 +6,8 @@ import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import { TextField } from '@mui/material';
 import { useParams } from 'react-router-dom';
+import { getProducts } from '../actions';
+import { getProductsBySlug } from './../actions/product.action';
 
 
 export function Search(props) {
@@ -51,11 +53,11 @@ export function Search(props) {
 }
 export const Sort = (props) => {
     const dispatch = useDispatch();
-    const sortState = useSelector((state) => state.product.sort)
-    const [sort, setSort] = useState(sortState);
-    // console.log("sort", sort)
+    const [sort, setSort] = useState("");
     const { slug } = useParams()
 
+    console.log("slug", slug)
+    console.log("sort", sort)
     const handleChange = (event) => {
         setSort(event.target.value);
     };
@@ -86,12 +88,13 @@ export const Sort = (props) => {
         },
     ]
     useEffect(() => {
+        if (props.slug == "all") {
+            dispatch(getProducts(sort))
 
-        if (props.showAll) {
-            dispatch(props.get(sort))
         }
-        if (props.getSlug) {
-            dispatch(props.getSlug(slug, sort))
+        if (props.slug !== "all") {
+            dispatch(getProductsBySlug(slug, sort))
+
         }
 
     }, [sort])//добавил сорт

@@ -4,14 +4,10 @@ import { NavLink } from 'react-router-dom';
 export default function BackButton(props) {
 
     return (
-        <div>
+        <a href={props.href ? props.href : "/"}>
             <button className="backButton">
-                <NavLink
-                    to={`${props.href ? props.href : "/siteSetting"}`}
-                >
-                    {props.text ? props.text : "Назад"}
-                </NavLink>
+                {props.text ? props.text : "Назад"}
             </button>
-        </div> 
+        </a>
     )
 }
