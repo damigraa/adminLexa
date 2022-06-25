@@ -97,13 +97,13 @@ const Header = (props) => {
       <Nav>
         <div className="nav-itemContainer">
           <li className="nav-item">
-            <NavLink to="signin" className="nav-link">
+            <NavLink to="/signin" className="nav-link">
               Войти
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to="signup" className="nav-link">
-              Регестрация
+            <NavLink to="/signup" className="nav-link">
+              Регистрация
             </NavLink>
           </li>
         </div>

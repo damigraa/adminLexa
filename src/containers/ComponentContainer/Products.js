@@ -68,14 +68,13 @@ const Products = () => {
 
   }
   useEffect(() => {
-    if (slug !== "all") {
-      dispatch(getProductsBySlug(slug))
-    }
+
     if (slug === "all") {
       dispatch(getProducts())
-    }
+    } 
+    dispatch(getProductsBySlug(slug))
   }, [])
-  console.log(slug === "all")
+  console.log(slug)
   const showProductDetailsModal = (product) => {
     setProductDetails(product);
     setProductDetailModal(true);
