@@ -47,7 +47,7 @@ const Signup = (props) => {
   //   return <p>Loading...!</p>;
   // }
 
-  return <Navigate to="/signin" />
+  // return <Navigate to="/signin" />
 
   return (
     <Layout>

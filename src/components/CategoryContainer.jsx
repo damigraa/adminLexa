@@ -48,7 +48,7 @@ const CategoryContainer = ({ showAllProductsButton, setShowAll, setNameCategory,
 
             <div className="categoryContainer__linkContainer">
                 <div onClick={showAllProductsButton} >
-                    <NavLink to="all">#Все</NavLink>
+                    <NavLink to="/products/all">#Все</NavLink>
                 </div>
 
                 {category.length > 0 ? renderFilter(category) : null}

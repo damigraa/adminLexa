@@ -25,7 +25,7 @@ const Products = () => {
 
   const [show, setShow] = useState(false);
   const [productDetailModal, setProductDetailModal] = useState(false);
-  const [productDetails, setProductDetails] = useState(null);
+  const [productDetails, setProductDetails] = useState(null); 
   const [currentId, setCurrentId] = useState(null)
 
   const [productForm, setProductForm] = useState({
@@ -63,17 +63,16 @@ const Products = () => {
   }
   const { slug } = useParams()
 
-  const showAllProductsButton = () => {
+  const showAllProductsButton = () => {  
     dispatch(getProducts(slug))
 
   }
   useEffect(() => {
-
     if (slug === "all") {
       dispatch(getProducts())
     } 
     dispatch(getProductsBySlug(slug))
-  }, [])
+  }, [slug])
   console.log(slug)
   const showProductDetailsModal = (product) => {
     setProductDetails(product);
