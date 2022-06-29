@@ -1,6 +1,6 @@
 import axios from "../../helpers/axios"
 import { warrantyConstants } from '../constants';
-import { deletedWarranty, updatedWarranty } from './../api/api';
+import { deletedWarranty, updatedWarranty } from '../api/warranty';
 
 
 export const getWarranty = () => {

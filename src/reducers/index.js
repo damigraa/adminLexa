@@ -30,6 +30,7 @@ import ceramics from './components/ceramics'
 
 import engravingLayout from './components/engravingLayout'
 import engravingCategory from './components/engravingCategory'
+import deliveryInfo from './components/deliveryInfo'
 
 
 import { combineReducers } from 'redux'
@@ -64,6 +65,7 @@ const rootReducer = combineReducers({
     footer,
     graniteTiles,
     ceramics,
+    deliveryInfo,
     engravingCategory,
     engravingLayout,
 

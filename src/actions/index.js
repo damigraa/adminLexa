@@ -29,4 +29,5 @@ export * from "./components/ceramics"
 export * from "./engravingCategory"
 export * from "./engravingLayout"
 export * from "./components/portfolio"
+export * from "./components/deliveryInfo"
 

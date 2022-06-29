@@ -4,12 +4,13 @@ import { Container, Row, Col, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteBlog, getBlog } from './../../actions';
 import { MainContainer } from './../MainContainer';
-import { RenderBlog } from "../render/RenderBlog";
 import { AddBlog } from '../create/AddBlog.jsx';
 import ModalConfirm from './../../components/BurgerMenu/ModalConfirm';
 import { RenderDetailsBlog } from "../render/RenderDetailsBlog";
+import RenderFileContainer from './../../components/RenderFileContainer';
 
 const Blog = () => {
+  const fileView = useSelector(state => state.blog.view)
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
@@ -86,13 +87,14 @@ const Blog = () => {
       <Container>
         <Row>
           <Col>
-            <RenderBlog
-              setDeleteId={setDeleteId}
-              setShowDeleteModal={setShowDeleteModal}
-              showBlogDetailsModal={showBlogDetailsModal}
-              setShow={setShow}
-              setCurrentId={setCurrentId}
-              blog={blog}
+          <RenderFileContainer
+                setShowDeleteModal={setShowDeleteModal}
+                setDeleteId={setDeleteId}
+                items={blog}
+                fileView={fileView}
+                showDetailsModal={showBlogDetailsModal}
+                setCurrentId={setCurrentId}
+                setShow={setShow}
             />
           </Col>
         </Row>

@@ -3,7 +3,7 @@ import { generatePublicUrl } from '../urlConfig'
 import Loader from './Loader';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SettingsIcon from '@mui/icons-material/Settings';
-const FileContainer = (props) => {
+const RenderFileContainer = (props) => {
 
     const { loading, showDetailsModal, deleteFunc, setCurrentId, setShow, items, fileView,
         setShowDeleteModal, setDeleteId, setShowAll
@@ -94,5 +94,5 @@ const FileContainer = (props) => {
         )
     }
 }
-export default FileContainer
+export default RenderFileContainer
 

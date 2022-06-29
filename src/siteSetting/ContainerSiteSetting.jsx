@@ -8,46 +8,28 @@ import { ButtonShow } from './ButtonShow';
 
 const ContainerSiteSetting = (props) => {
 
-    const test = () => {
-        if (props.limitOne) {
-            if (props.item?.length > 0) {
-                return null
-            } else {
-                return (
-                    <ButtonShow
-                        setShow={props.setShow}
-                    />
-
-                )
-            }
-        } else {
-            return (
-                <ButtonShow
-                    setShow={props.setShow}
-                />
-            )
-        }
-    }
     return (
         <>
             <Layout sidebar>
                 <Container>
                     <Row>
                         <Col md={12}>
-                            <h3 style={{ textAlign: "center", marginBottom: "20px" }}>{props.title}</h3>
+                            <h3 style={{ textAlign: "center", margin: "20px" }}>{props.title}</h3>
                         </Col>
                     </Row>
                     <Row>
                         <Col md={12}>
-                            <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'space-between' }}>
-                                <BackButton text={props.text} />
+                            <div style={{ margin: '20px auto', display: 'flex', justifyContent: 'space-between', maxWidth: "800px", alignItems: "center" }}>
                                 <div className="actionBtnContainer">
                                     <span>Действие: </span>
-
-                                    {test()}
-                                    <button className="btn btn-secondary" onClick={props.delete}><IoIosTrash /> <span>Удалить</span></button>
-                                    <button className="btn btn-secondary" onClick={props.update}><IoIosCloudUpload /> <span>Редактировать</span></button>
+                                    <ButtonShow
+                                        setShow={props.setShow}
+                                    />
                                 </div>
+                                <BackButton
+                                    href={props.href}
+                                    text={props.text}
+                                />
 
                             </div>
 

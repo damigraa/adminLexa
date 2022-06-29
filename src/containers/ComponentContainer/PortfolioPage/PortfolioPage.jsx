@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { deletePortfolio, getPortfolio } from '../../../actions';
-import { RenderPortfolio } from './../../render/RenderPortfolio';
 import { AddPortfolio } from './../../create/AddPortfolio';
 import { DetailsPortfolio } from './../../detailsModal/DetailsPortfolio';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,8 +8,12 @@ import { Col } from 'react-bootstrap';
 import { Container } from 'react-bootstrap';
 import { MainContainer } from './../../MainContainer';
 import ModalConfirm from './../../../components/BurgerMenu/ModalConfirm';
+import RenderFileContainer from './../../../components/RenderFileContainer';
 
 const PortfolioPage = () => {
+
+
+    const fileView = useSelector(state => state.portfolio.view)
 
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [deleteId, setDeleteId] = useState(null);
@@ -94,13 +97,14 @@ const PortfolioPage = () => {
             <Container>
                 <Row>
                     <Col>
-                        <RenderPortfolio
-                            setDeleteId={setDeleteId}
+                        <RenderFileContainer
                             setShowDeleteModal={setShowDeleteModal}
-                            showPortfolioDetailsModal={showPortfolioDetailsModal}
-                            setShow={setShow}
+                            setDeleteId={setDeleteId}
+                            items={portfolio}
+                            fileView={fileView}
+                            showDetailsModal={showPortfolioDetailsModal}
                             setCurrentId={setCurrentId}
-                            portfolio={portfolio}
+                            setShow={setShow}
                         />
                     </Col>
                 </Row>

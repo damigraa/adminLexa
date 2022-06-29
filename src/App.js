@@ -45,6 +45,7 @@ import Cabinet from './containers/Cabinet/Cabinet';
 import ContainerEngravingCategoryPage from './containers/LinkEngravingCategoryPage';
 import EngravingLayout from './containers/EngravingLayout/EngravingLayout';
 import PortfolioPage from './containers/ComponentContainer/PortfolioPage/PortfolioPage';
+import DeliveryInfo from './siteSetting/containers/DeliveryInfo';
 
 
 
@@ -136,6 +137,31 @@ function App() {
       path: "/catalog-title",
       component: <CatalogTitle />
     },
+    
+    {
+      path: "/orders",
+      component: <Orders />
+    },
+    {
+      path: "/contact",
+      component: <Contact />
+    },
+    {
+      path: "/mainImageSetting",
+      component: <MainImage />
+    },
+    {
+      path: "/paymentLI",
+      component: <PaymentLI />
+    },
+    {
+      path: "/warranty",
+      component: <Warranty />
+    },
+    {
+      path: "/deliveryInfo",
+      component: <DeliveryInfo />
+    },
 
   ]
   return (
@@ -155,17 +181,16 @@ function App() {
             {/* <PrivateRoute path="/graniteTiles" component={GraniteTiles} /> */}
             {/* <PrivateRoute path="/ceramics" component={Ceramics} /> */}
             {/* <PrivateRoute path="/cabinet" component={Cabinet} />
-        {/* <PrivateRoute path="/orders" component={Orders} />
+
         <PrivateRoute path="/promotionsSetting" component={Promotions} />
-        <PrivateRoute path="/mainImageSetting" component={MainImage} />
+
         <PrivateRoute path="/manufactureSetting" component={Manufacture} />
+
         <PrivateRoute path="/comeToUsSetting" component={ComeToUs} />
         <PrivateRoute path="/weWorkOnline" component={WeWorkOnline} />
         <PrivateRoute path="/chooseMemorialPhotos" component={ChooseMemorialPhotos} />
         <PrivateRoute path="/engraving" component={Engraving} />
-        <PrivateRoute path="/contact" component={Contact} />
         <PrivateRoute path="/granite-material" component={GraniteMaterial} />
-        <PrivateRoute path="/warranty" component={Warranty} />
         <PrivateRoute path="/paymentLI" component={PaymentLI} />
         <PrivateRoute path="/paymentAndDelivery" component={PaymentAndDeliveryContainer} />
         {/* 

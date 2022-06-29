@@ -6,16 +6,17 @@ import { getProducts, searchProducts } from "../../actions";
 import { AddProductModal } from "../create/AddProductModal";
 import { MainContainer } from '../MainContainer';
 import { DetailsProduct } from "../render/DetailsProduct";
-import { RenderProducts } from "../render/RenderProducts";
 import ModalConfirm from './../../components/BurgerMenu/ModalConfirm';
 import { deleteProductById, getProductsBySlug } from './../../actions/product.action';
 import { Link, useParams } from 'react-router-dom';
 import CategoryContainer from "../../components/CategoryContainer";
+import FileContainer from '../../components/RenderFileContainer';
 
 const Products = () => {
   const product = useSelector((state) => state.product.products)
   const activeCategory = useSelector(state => state.product.activeCategory)
-
+  const fileView = useSelector(state => state.product.view)
+  const loading = useSelector(state => state.product.loading)
 
   const [showActiveCategory, setShowActiveCategory] = useState(activeCategory);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -25,7 +26,7 @@ const Products = () => {
 
   const [show, setShow] = useState(false);
   const [productDetailModal, setProductDetailModal] = useState(false);
-  const [productDetails, setProductDetails] = useState(null); 
+  const [productDetails, setProductDetails] = useState(null);
   const [currentId, setCurrentId] = useState(null)
 
   const [productForm, setProductForm] = useState({
@@ -63,14 +64,14 @@ const Products = () => {
   }
   const { slug } = useParams()
 
-  const showAllProductsButton = () => {  
+  const showAllProductsButton = () => {
     dispatch(getProducts(slug))
 
   }
   useEffect(() => {
     if (slug === "all") {
       dispatch(getProducts())
-    } 
+    }
     dispatch(getProductsBySlug(slug))
   }, [slug])
   console.log(slug)
@@ -119,13 +120,15 @@ const Products = () => {
         </h1>
         <Row>
           <Col>
-            <RenderProducts
-              setDeleteId={setDeleteId}
-              setShowDeleteModal={setShowDeleteModal}
-              showProductDetailsModal={showProductDetailsModal}
-              setShow={setShow}
-              setCurrentId={setCurrentId}
-              product={product}
+          <FileContainer
+                loading={loading}
+                setShowDeleteModal={setShowDeleteModal}
+                setDeleteId={setDeleteId}
+                items={product}
+                fileView={fileView}
+                showDetailsModal={showProductDetailsModal}
+                setCurrentId={setCurrentId}
+                setShow={setShow}
             />
           </Col>
         </Row>

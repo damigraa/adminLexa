@@ -55,11 +55,11 @@ const Home = (props) => {
     //   text: "Пользователи",
     //   icon: <PersonOutlineIcon />
     // },
-    // {
-    //   href: "/siteSetting",
-    //   text: "Настройки сайта",
-    //   icon: <SettingsIcon />
-    // },
+    {
+      href: "/siteSetting",
+      text: "Настройки сайта",
+      icon: <SettingsIcon />
+    },
   ]
   return (
     <Layout sidebar>
