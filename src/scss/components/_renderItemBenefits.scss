@@ -1,0 +1,28 @@
+.renderItemBenefits{
+display: flex;
+max-width: 1000px;
+margin: 0 auto;
+align-items: center;
+justify-content: center;
+flex-wrap: wrap;
+    &__itemContainer{
+        min-width: 400px;
+        margin: 0 auto;
+        background-color: rgb(205, 205, 205);
+        padding: 10px;
+        height: 100%;
+        margin: 20px;
+       
+        h3{
+            font-weight: 600;
+        }
+    }
+    &__titleContainer{
+        display: flex;
+        align-items: center;
+        span{
+            font-size: 25px;
+
+        }
+    }
+}

@@ -31,7 +31,10 @@ import ceramics from './components/ceramics'
 import engravingLayout from './components/engravingLayout'
 import engravingCategory from './components/engravingCategory'
 import deliveryInfo from './components/deliveryInfo'
+import paymentList from './components/paymentList'
 
+import aboutUs from './components/aboutUs'
+import benefits from './components/benefits'
 
 import { combineReducers } from 'redux'
 
@@ -68,6 +71,9 @@ const rootReducer = combineReducers({
     deliveryInfo,
     engravingCategory,
     engravingLayout,
+    paymentList,
+    aboutUs,
+    benefits,
 
 })
 

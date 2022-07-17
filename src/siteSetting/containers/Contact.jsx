@@ -26,6 +26,9 @@ function Contacts() {
             item={contact}
             setShow={handleShow}
             title={"Связаться с нами"}
+            href="/siteSetting"
+            limitItem
+
         >
             <AddContacts
                 show={show}

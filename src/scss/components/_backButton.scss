@@ -2,20 +2,16 @@
     width: 170px;
     height: 40px;
     margin: 20px;
+    outline: none;
     background: rgba(0,0,0,.5);
     color: white;
     transition: 0.3s all;
     border: 1px solid rgba(0,0,0,.8);
-    a{
-        text-decoration: none;
-        color: rgb(226, 226, 226);
-        transition: 0.3s all;
-        text-transform: uppercase;
-        padding: 10px;
-        font-size: 15px;
-        letter-spacing: 3px;
-
-    }
+    text-decoration: none;
+    transition: 0.3s all;
+    font-size: 13px;
+    padding: 10px;
+    letter-spacing: 3px;
     &:hover{
     background: rgba(0,0,0,.2);
     a{

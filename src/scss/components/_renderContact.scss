@@ -1,0 +1,10 @@
+.renderContact{
+    max-width: 500px;
+    margin: 20px auto;
+    background-color: #cdcdcd;
+    padding: 10px;
+    &__buttonBlock{
+        display:flex;
+        padding: 0 20px;
+    }
+}

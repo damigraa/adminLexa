@@ -46,6 +46,9 @@ import ContainerEngravingCategoryPage from './containers/LinkEngravingCategoryPa
 import EngravingLayout from './containers/EngravingLayout/EngravingLayout';
 import PortfolioPage from './containers/ComponentContainer/PortfolioPage/PortfolioPage';
 import DeliveryInfo from './siteSetting/containers/DeliveryInfo';
+import PaymentList from './siteSetting/containers/PaymentList';
+import AboutUs from './siteSetting/containers/AboutUs/AboutUs';
+import Benefits from './siteSetting/containers/Benefits/Benefits';
 
 
 
@@ -137,13 +140,13 @@ function App() {
       path: "/catalog-title",
       component: <CatalogTitle />
     },
-    
+
     {
       path: "/orders",
       component: <Orders />
     },
     {
-      path: "/contact",
+      path: "/contactsSetting",
       component: <Contact />
     },
     {
@@ -162,6 +165,18 @@ function App() {
       path: "/deliveryInfo",
       component: <DeliveryInfo />
     },
+    {
+      path: "/paymentList",
+      component: <PaymentList />
+    },
+    {
+      path: "/aboutUsSetting",
+      component: <AboutUs />
+    },
+    {
+      path: "/benefitsSetting",
+      component: <Benefits />
+    },
 
   ]
   return (
@@ -173,14 +188,14 @@ function App() {
             key={index}
             path={obj.path}
             element={<PrivateRoute>{obj.component}</PrivateRoute>}
-            />
-            
-            ))}
+          />
 
-            {/* <PrivateRoute path="/tombstoneCurb" component={TombstoneCurb} /> */}
-            {/* <PrivateRoute path="/graniteTiles" component={GraniteTiles} /> */}
-            {/* <PrivateRoute path="/ceramics" component={Ceramics} /> */}
-            {/* <PrivateRoute path="/cabinet" component={Cabinet} />
+        ))}
+
+        {/* <PrivateRoute path="/tombstoneCurb" component={TombstoneCurb} /> */}
+        {/* <PrivateRoute path="/graniteTiles" component={GraniteTiles} /> */}
+        {/* <PrivateRoute path="/ceramics" component={Ceramics} /> */}
+        {/* <PrivateRoute path="/cabinet" component={Cabinet} />
 
         <PrivateRoute path="/promotionsSetting" component={Promotions} />
 

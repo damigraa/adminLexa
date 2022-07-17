@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import Card from '../UI/Card/index';
 import { BsChevronUp, BsChevronDown, } from 'react-icons/bs';
+
+
 const RenderDropdownDetails = ({ items, handleShow }) => {
 
     const [clicked, setClicked] = useState(false);
@@ -10,7 +12,7 @@ const RenderDropdownDetails = ({ items, handleShow }) => {
             return setClicked(null);
         }
         setClicked(index);
-    };
+    }; 
 
     return (
         <div>

@@ -12,6 +12,7 @@ export const RenderMainImage = ({ setCurrentId, setShow, mainImage }) => {
         setCurrentId(item._id)
         setShow(true)
     }
+    console.log("mainImage", mainImage)
     return (
         <div>
             <div>

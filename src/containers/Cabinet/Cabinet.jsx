@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import Layout from '../../components/Layout'
 import { useSelector } from 'react-redux';
 import { AiOutlineEdit, AiOutlineMail, FiUser, AiOutlineLock } from 'react-icons/all'
-import { Row } from 'react-bootstrap';
-import { Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import EditCabinetModal from './EditCabinetModal';
 import RenderDropdownDetails from './../../components/DropdownDetails/RenderDropdownDetails';
+
+
 const Cabinet = (props) => {
     const user = useSelector((state) => state.auth.user);
     const [show, setShow] = useState(false)

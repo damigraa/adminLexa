@@ -6,17 +6,19 @@ import { addContact, updateContact } from '../../actions';
 
 const AddContacts = ({ show, handleClose, setCurrentId, currentId }) => {
     const dispatch = useDispatch()
-    const contacts = useSelector((state) => currentId ? state.contact.contact.find((c) => c._id === currentId) : null)
+    const contactId = useSelector((state) => currentId ? state.contact.contact.find((c) => c._id === currentId) : null)
     const [formContact, setFormContact] = useState({
-        title: "",
-        description: "",
-        iconImg: "",
-        href: "",
-
+        city: "",
+        address: "",
+        cityIndex: "",
+        country: "",
+        email: "",
+        number: "",
+        numberTwo: ""
     })
     useEffect(() => {
-        if (contacts) setFormContact(contacts)
-    }, [contacts])
+        if (contactId) setFormContact(contactId)
+    }, [contactId])
 
 
     const submitContactForm = (e) => {
@@ -27,21 +29,29 @@ const AddContacts = ({ show, handleClose, setCurrentId, currentId }) => {
             clear()
         } else {
             const form = new FormData()
-            form.append("title", formContact.title)
-            form.append("description", formContact.description)
-            form.append("iconImg", formContact.iconImg)
-            form.append("href", formContact.href)
-            dispatch(addContact(form)).then(() => handleClose())
-            clear()
+            form.append("city", formContact.city)
+            form.append("address", formContact.address)
+            form.append("cityIndex", formContact.cityIndex)
+            form.append("country", formContact.country)
+            form.append("email", formContact.email)
+            form.append("number", formContact.number)
+            form.append("numberTwo", formContact.numberTwo)
+            dispatch(addContact(formContact)).then(() => handleClose())
+            // clear()
         }
     }
     const clear = () => {
         setCurrentId(null)
         setFormContact({
-            title: "",
-            description: "",
-            iconImg: "",
-            href: "",
+            city: "",
+            address: "",
+            cityIndex: "",
+            country: "",
+            email: "",
+            number: "",
+            numberTwo: ""
+
+
         })
     }
     return (
@@ -52,31 +62,48 @@ const AddContacts = ({ show, handleClose, setCurrentId, currentId }) => {
             onSubmit={submitContactForm}
         >
             <Input
-                label="Заголовок"
-                value={formContact.title}
-                placeholder={"Введите заголовок"}
-                name={"title"}
-                onChange={(e) => setFormContact({ ...formContact, title: e.target.value })}
+                label="Город"
+                value={formContact.city}
+                placeholder={"Город"}
+                onChange={(e) => setFormContact({ ...formContact, city: e.target.value })}
             />
             <Input
-                label="Описание"
-                value={formContact.description}
-                placeholder={"Введите описание"}
-                name={"description"}
-                onChange={(e) => setFormContact({ ...formContact, description: e.target.value })}
+                label="Адрес производства"
+                value={formContact.address}
+                placeholder={"Введите адресс производства"}
+                onChange={(e) => setFormContact({ ...formContact, address: e.target.value })}
             />
             <Input
-                label="Ссылка(не обязательно)"
-                value={formContact.href}
-                placeholder={"Введите ссылку"}
-                name={"href"}
-                onChange={(e) => setFormContact({ ...formContact, href: e.target.value })}
+                label="Индекс города"
+                value={formContact.cityIndex}
+                placeholder={"Введите индекс города"}
+                onChange={(e) => setFormContact({ ...formContact, cityIndex: e.target.value })}
             />
-            <input
-                type="file"
-                name="iconImg"
-                onChange={(e) => setFormContact({ ...formContact, iconImg: e.target.files[0] })}
+            <Input
+                label="Страна"
+                value={formContact.country}
+                placeholder={"Введите страну"}
+                onChange={(e) => setFormContact({ ...formContact, country: e.target.value })}
             />
+            <Input
+                label="email"
+                value={formContact.email}
+                placeholder={"Введите email"}
+                onChange={(e) => setFormContact({ ...formContact, email: e.target.value })}
+            />
+            <Input
+                label="Номер телефона"
+                value={formContact.number}
+                placeholder={"Введите основной номер телефона"}
+                onChange={(e) => setFormContact({ ...formContact, number: e.target.value })}
+            />
+            <Input
+                label="Второй номер"
+                value={formContact.numberTwo}
+                placeholder={"Введите Второй номер"}
+                onChange={(e) => setFormContact({ ...formContact, numberTwo: e.target.value })}
+            />
+
         </Modal>
 
     )

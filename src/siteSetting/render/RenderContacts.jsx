@@ -3,6 +3,7 @@ import { deleteContact } from '../../actions';
 import Loader from '../../components/Loader';
 import { useDispatch } from 'react-redux';
 import { generatePublicUrl } from '../../urlConfig';
+import BackButton from './../components/BackButton';
 
 export const RenderContacts = ({ contact, setCurrentId, setShow }) => {
     const dispatch = useDispatch()
@@ -12,29 +13,33 @@ export const RenderContacts = ({ contact, setCurrentId, setShow }) => {
         setShow(true)
     }
     return (
-        <div className="row">
+        <div className="renderContact">
             {!contact ? <Loader /> :
-                contact.map((item, index) =>
-                    <div className="col-уsm-3" key={item._id} style={{ textAlign: "center", height: "220px", paddingTop: "20px", margin: "auto" }}>
-                        <img style={{
-                            width: "40px",
-                            height: "40px"
-                        }}
-                            src={generatePublicUrl(item.iconImg) ||
-                                <div style={{
-                                    height: "0px",
-                                    width: "50px",
-                                    background: "black",
-                                    margin: "0 auto"
-                                }}>
-                                </div>} />
-                        <div>{item.title || null}</div>
-                        <div>{item.description || null}</div>
-                        <p>{item.href || null}</p>
-                        <button className="btn btn-secondary" onClick={() => Edit(item)}>Редактировать</button>
-                        <button className="btn btn-secondary" onClick={() => dispatch(deleteContact(item._id))}>Удалить</button>
+                contact.map((item) =>
+                    <div className="col-12" key={item._id} style={{ textAlign: "center", height: "220px", paddingTop: "20px", margin: "auto" }}>
+                        <div className="renderContact__city">{item.city || null}</div>
+                        <div className="renderContact__address">{item.address || null}</div>
+                        <div className="renderContact__cityIndex">{item.cityIndex || null}</div>
+                        <div className="renderContact__country">{item.country || null}</div>
+                        <div className="renderContact__email">{item.email || null}</div>
+                        <div className="renderContact__number">{item.number || null}</div>
+                        <div className="renderContact__numberTwo">{item.numberTwo || null}</div>
+
+                        <div className="renderContact__buttonBlock">
+                            <BackButton
+                                onClickButton
+                                onClick={() => Edit(item)}
+                                text="Изменить"
+                            />
+                            <BackButton
+                                onClickButton
+                                onClick={() => dispatch(deleteContact(item._id))}
+                                text="Удалить"
+                            />
+                        </div>
                     </div>
-                )}
-        </div>
+                )
+            }
+        </div >
     )
 }

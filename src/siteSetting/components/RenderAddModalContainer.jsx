@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 const RenderAddModalContainer = (props) => {
-    const { currentId, setCurrentId, show, setShow, formItems, setFormItems, add, update, currentIdUpdate } = props
+    const {currentId, setCurrentId, show, setShow, formItems, setFormItems, add, update, currentIdUpdate } = props
     const dispatch = useDispatch()
 
     const handleClose = () => {
@@ -15,7 +15,7 @@ const RenderAddModalContainer = (props) => {
     useEffect(() => {
         if (currentIdUpdate) setFormItems(currentIdUpdate)
     }, [currentIdUpdate])
-
+    
     const submitWarrantyForm = () => {
         if (currentId) {
             dispatch(update(currentId, formItems))
@@ -25,7 +25,7 @@ const RenderAddModalContainer = (props) => {
             form.append("title", formItems.title)
             form.append("description", formItems.description)
             form.append("iconImg", formItems.iconImg)
-            dispatch(add(form)).then(() => handleClose())
+            dispatch(add(formItems)).then(() => handleClose())
         }
 
     }

@@ -1,35 +1,34 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { generatePublicUrl } from '../../urlConfig';
-import Loader from './../../components/Loader';
+import Loader from '../../../components/Loader';
 
-const RenderItemsContainer = ({ items, setCurrentId, setShow, deleteButton, limitItem }) => {
+const RenderItemBenefits = ({ items, setCurrentId, setShow, deleteButton, limitItem }) => {
     const dispatch = useDispatch()
 
     const Edit = (item) => {
         setCurrentId(item._id)
         setShow(true)
     }
+    
     return (
-        <div className="row">
+        <div className="renderItemBenefits">
             {!items ? <Loader /> :
-                items.map((item) =>
+                items.map((item, index) =>
                     <div
-                        className={limitItem ? "col-sm-10" : "col-sm-4"}
+                        className="renderItemBenefits__itemContainer"
                         key={item._id}
-                        style={{ textAlign: "center", height: "300px", paddingTop: "20px", margin: "auto" }}>
-                        <img
-                            src={generatePublicUrl(item.aboutUsPicture || item.itemImg)}
-                            style={{ height: limitItem ? "200px" : "100px" }}
-                        />
-                        <div style={{ margin: "20px" }}>
-                            <div>
-                                {item.title}
-                            </div>
+                    >
+                        <div className="renderItemBenefits__contentBlock">
+                            <div className="renderItemBenefits__titleContainer">
+                                <h3>{index + 1}. </h3>
+                                <h3>
+                                    {item.title}
+                                </h3>
 
-                            <div>
-                                {item.description}
                             </div>
+                            <p>
+                                {item.description}
+                            </p>
                         </div>
                         <div style={{ textAlign: "center" }}>
                         </div>
@@ -52,4 +51,4 @@ const RenderItemsContainer = ({ items, setCurrentId, setShow, deleteButton, limi
     )
 }
 
-export default RenderItemsContainer
+export default RenderItemBenefits

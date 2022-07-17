@@ -7,7 +7,26 @@ import { ButtonShow } from './ButtonShow';
 
 
 const ContainerSiteSetting = (props) => {
-
+    const renderButtonAdd = () => {
+        if (props.item && props.item.length === 0) {
+            return (
+                <div className="actionBtnContainer">
+                    <span>Действие: </span>
+                    <ButtonShow
+                        setShow={props.setShow}
+                    />
+                </div>
+            )
+        } else {
+            return <div className="actionBtnContainer">
+                <span>Действие: </span>
+                <ButtonShow
+                    disabled={true}
+                    // setShow={props.setShow}
+                />
+            </div>
+        }
+    }
     return (
         <>
             <Layout sidebar>
@@ -20,12 +39,16 @@ const ContainerSiteSetting = (props) => {
                     <Row>
                         <Col md={12}>
                             <div style={{ margin: '20px auto', display: 'flex', justifyContent: 'space-between', maxWidth: "800px", alignItems: "center" }}>
-                                <div className="actionBtnContainer">
-                                    <span>Действие: </span>
-                                    <ButtonShow
-                                        setShow={props.setShow}
-                                    />
-                                </div>
+                                {props.limitItem
+                                    ? renderButtonAdd()
+                                    : <div className="actionBtnContainer">
+                                        <span>Действие: </span>
+                                        <ButtonShow
+                                            setShow={props.setShow}
+                                        />
+                                    </div>}
+
+
                                 <BackButton
                                     href={props.href}
                                     text={props.text}
