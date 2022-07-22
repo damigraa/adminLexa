@@ -28,6 +28,7 @@ function MainImage() {
 
     return (
         <ContainerSiteSetting
+            limitItem
             item={mainImage}
             setShow={handleShow}
             title={"Редактор Главного изображени страницы"}

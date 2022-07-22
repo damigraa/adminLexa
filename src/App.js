@@ -49,6 +49,8 @@ import DeliveryInfo from './siteSetting/containers/DeliveryInfo';
 import PaymentList from './siteSetting/containers/PaymentList';
 import AboutUs from './siteSetting/containers/AboutUs/AboutUs';
 import Benefits from './siteSetting/containers/Benefits/Benefits';
+import Architect from './siteSetting/containers/Architect/Architect';
+import ArchitectLi from './siteSetting/containers/ArchitectLi/ArchitectLi';
 
 
 
@@ -177,7 +179,14 @@ function App() {
       path: "/benefitsSetting",
       component: <Benefits />
     },
-
+    {
+      path: "/architectSetting",
+      component: <Architect />
+    },
+    {
+      path: "/architectLiSetting",
+      component: <ArchitectLi />
+    },
   ]
   return (
     <div className="App">

@@ -27,14 +27,15 @@ import tombstoneCurb from './components/tombstoneCurb'
 import graniteTiles from './components/graniteTiles'
 import footer from './components/footer'
 import ceramics from './components/ceramics'
-
 import engravingLayout from './components/engravingLayout'
 import engravingCategory from './components/engravingCategory'
 import deliveryInfo from './components/deliveryInfo'
 import paymentList from './components/paymentList'
-
 import aboutUs from './components/aboutUs'
 import benefits from './components/benefits'
+import architect from './components/architect'
+import architectLi from './components/architectLi'
+import architectSkills from './components/architectSkills'
 
 import { combineReducers } from 'redux'
 
@@ -74,7 +75,9 @@ const rootReducer = combineReducers({
     paymentList,
     aboutUs,
     benefits,
-
+    architect,
+    architectLi,
+    architectSkills,
 })
 
 export default rootReducer

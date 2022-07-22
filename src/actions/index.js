@@ -33,4 +33,7 @@ export * from "./components/deliveryInfo"
 export * from "./components/paymentList"
 export * from "./components/aboutUs"
 export * from "./components/benefits"
+export * from "./components/architect"
+export * from "./components/architectLi"
+export * from "./components/architectSkills"
 

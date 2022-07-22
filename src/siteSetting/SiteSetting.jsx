@@ -16,6 +16,8 @@ const SiteSetting = () => {
                     <li><NavLink to={"/aboutUsSetting"}>О нас </NavLink></li>
                     <li><NavLink to={"/benefitsSetting"}>Преймущества нашей компании </NavLink></li>
                     <li><NavLink to={"/contactsSetting"}>Контакты </NavLink></li>
+                    <li><NavLink to={"/architectSetting"}>Страница артитекторам </NavLink></li>
+                    <li><NavLink to={"/architectLiSetting"}>Список на странице архитектор </NavLink></li>
 
                 </ul>
             </div>

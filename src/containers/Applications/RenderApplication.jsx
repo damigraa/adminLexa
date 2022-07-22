@@ -1,18 +1,24 @@
-import React from 'react'
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import { getApplication } from '../../actions';
 import Loader from '../../components/Loader';
 
 
 export const RenderApplication = (props) => {
     const { showApplicationDetailsModal } = props
     const applications = useSelector(state => state.application.applications);
+    const dispatch = useDispatch()
 
+    console.log("applications", applications)
+
+    useEffect(() => {
+        dispatch(getApplication())
+    }, [])
     if (applications.length === 0) {
         return (
             <Loader />
         )
     }
-
     return (
         <div>
             <div className="tableContainerMobile">

@@ -18,7 +18,10 @@ export const RenderMainImage = ({ setCurrentId, setShow, mainImage }) => {
             <div>
                 {!mainImage ? <Loader /> :
                     mainImage.map((item) =>
-                        <div style={{ margin: "20px" }} key={item._id}>
+                        <div
+                            style={{ margin: "20px" }}
+                            key={item._id}
+                        >
                             <div style={{ width: "500px", }} >
                                 <img style={{ width: "400px", }} src={generatePublicUrl(item.image)} />
 
