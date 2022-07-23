@@ -19,7 +19,7 @@ const RenderItemsContainer = ({ items, setCurrentId, setShow, deleteButton, limi
                         key={item._id}
                         style={{ textAlign: "center", height: "300px", paddingTop: "20px", margin: "auto" }}>
                         <img
-                            src={generatePublicUrl(item.aboutUsPicture || item.itemImg || item.mainImg)}
+                            src={generatePublicUrl(item.aboutUsPicture || item.itemImg || item.mainImg || item.iconImg)}
                             style={{ height: limitItem ? "200px" : "100px" }}
                         />
                         <div style={{ margin: "20px" }}>

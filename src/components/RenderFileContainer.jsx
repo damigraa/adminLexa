@@ -33,6 +33,7 @@ const RenderFileContainer = (props) => {
         )
     }
     if (loading) return <Loader />
+    if (!items) return null
     if (fileView === "plate") {
         return (
             <div className="fileplate">

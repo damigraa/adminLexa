@@ -51,6 +51,7 @@ import AboutUs from './siteSetting/containers/AboutUs/AboutUs';
 import Benefits from './siteSetting/containers/Benefits/Benefits';
 import Architect from './siteSetting/containers/Architect/Architect';
 import ArchitectLi from './siteSetting/containers/ArchitectLi/ArchitectLi';
+import ArchitectSkills from './siteSetting/containers/ArchitectSkills/ArchitectSkills';
 
 
 
@@ -186,6 +187,10 @@ function App() {
     {
       path: "/architectLiSetting",
       component: <ArchitectLi />
+    },
+    {
+      path: "/architectSkillsSetting",
+      component: <ArchitectSkills />
     },
   ]
   return (
